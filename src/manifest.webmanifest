@@ -1,8 +1,9 @@
 {
-  "name": "ganatan",
-  "short_name": "ganatan",
+  "name": "UrbanZen",
+  "short_name": "UrbanZen",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
+  "description": "The app that helps you book a lesson",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

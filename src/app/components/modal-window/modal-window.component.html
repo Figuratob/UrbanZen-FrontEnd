@@ -1,0 +1,33 @@
+<button mat-icon-button aria-label="Close" (click)="onNoClick()">
+  <span aria-hidden="true" >&times;</span>
+</button>
+<h1 mat-dialog-title>{{lesson.lessonDayOfWeek}}, {{lesson.lessonDate}}</h1>
+
+<h1 mat-dialog-title>{{lesson.nameOfLesson}}</h1>
+
+<h6><img src="{{lesson.teacher.photo}}" class="img-fluid">{{lesson.teacher.name}}</h6>
+<h6>{{lesson.lessonStartTime}}-{{lesson.lessonEndTime}} <span class="badge badge-primary badge-pill">
+     Vabu kohti: {{lesson.availableSpaces-lesson.booked}}
+    </span></h6>
+<div mat-dialog-content>
+
+  <p>Kundalini jooga ehitab üles terve keha, arendab tasakaalustatud meelt,
+    aitab võtta ühendust sinus peituva lõpmatusega ja sinu kaasasündinud
+    sisemise tarkusega. Samuti avab see uksed, et saaksid ületada oma täit
+    potentsiaali. See annab sulle elujõudu ja tervist, mis on sinu
+    sünnipärane õigus. </p>
+
+</div>
+<div mat-dialog-actions>
+
+  <button mat-raised-button
+          (click)="openDialog(lesson, day, data.showBookingModalNotCancelModal)">
+    <span class="badge badge-primary badge-pill" *ngIf="data.showBookingModalNotCancelModal;else cancel">Broneeri</span>
+      <ng-template #cancel>
+    <span class="badge badge-primary badge-pill">Tühista</span>
+      </ng-template>
+
+
+  </button>
+
+</div>

@@ -9,16 +9,16 @@ export const environment = {
     /* SELECT ONE OF THOSE CONFIGURATIONS */
 
     /* LOCAL JSON (NO CRUD) */
-    api: false,
-    url: './assets/params/json/',
+    /* api: false,
+    url: './assets/params/json/',*/
 
     /* LOCAL REST API CRUD  */
     /* api: true,
     url: 'http://localhost:5200/', */
 
     /* EXTERNAL REST API CRUD */
-    /*api: true,
-    url: 'https://mock.ganatan.org/',*/
+    api: true,
+    url: 'https://mock.ganatan.org/',
 
     /* EXTERNAL REST API (NO CRUD) */
     /* api: true,

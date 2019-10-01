@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Ootame Sind</h1>
+
+<div mat-dialog-content>
+<h3>{{lesson.lessonDayOfWeek}}, {{lesson.lessonDate}}</h3>
+<h6>{{lesson.lessonStartTime}}-{{lesson.lessonEndTime}}</h6>
+<h3>{{lesson.nameOfLesson}}</h3>
+<h6>Õpetaja: {{lesson.teacher.name}}</h6>
+
+</div>
+
+<div mat-dialog-actions>
+
+  <button mat-button (click)="gotoBookings()">OK</button>
+
+</div>
