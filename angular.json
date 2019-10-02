@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ganatan": {
+    "UrbanZen": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -74,18 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ganatan:build"
+            "browserTarget": "UrbanZen:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ganatan:build:production"
+              "browserTarget": "UrbanZen:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ganatan:build"
+            "browserTarget": "UrbanZen:build"
           }
         },
         "test": {
@@ -123,11 +123,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ganatan:serve"
+            "devServerTarget": "UrbanZen:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ganatan:serve:production"
+              "devServerTarget": "UrbanZen:serve:production"
             }
           }
         },
