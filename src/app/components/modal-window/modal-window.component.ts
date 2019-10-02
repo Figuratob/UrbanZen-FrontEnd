@@ -31,13 +31,13 @@ export class ModalWindowComponent {
     if (showBookingModalNotCancelModal) {
       const dialogRef = this.dialog.open(BookingConfirmationComponent, {
         width: '360px',
-        data: {lesson: lesson, day: day, showBookingModalNotCancelModal: showBookingModalNotCancelModal}
+        data: {lesson , day, showBookingModalNotCancelModal}
       });
 
     } else {
       const dialogRef = this.dialog.open(BookingCancellationComponent, {
         width: '360px',
-        data: {lesson: lesson, day: day, showBookingModalNotCancelModal: showBookingModalNotCancelModal}
+        data: {lesson, day, showBookingModalNotCancelModal}
       });
     }
 

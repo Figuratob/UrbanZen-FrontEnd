@@ -62,7 +62,7 @@ export class TimetableComponent implements OnInit {
   @Input()
   showCaption: boolean;
   @Input()
-  showBookingModalNotCancelModal: boolean;
+  showBookingModalNotCancelModal = true;
   name: string;
   firstDayOfWeek: any;
   lastDayOfWeek: any;
@@ -101,7 +101,7 @@ export class TimetableComponent implements OnInit {
 
         const dialogRef = this.dialog.open(ModalWindowComponent, {
           width: '360px',
-          data: {lesson: lesson, day: day, showBookingModalNotCancelModal: showBookingModalNotCancelModal}
+          data: {lesson, day, showBookingModalNotCancelModal}
         });
 
         dialogRef.afterClosed().subscribe(result => {
