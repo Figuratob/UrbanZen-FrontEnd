@@ -32,7 +32,7 @@ export class ItemsService {
       const lcText = text.toString().toLowerCase();
       const result = value.filter(
         e => (
-          (e.name.toLowerCase().indexOf(lcText) === 0)
+          (e.firstName.toLowerCase().indexOf(lcText) === 0)
         )
       );
       resultCount = result.length;
@@ -48,7 +48,7 @@ export class ItemsService {
       const lcText = text.toString().toLowerCase();
       result = value.filter(
         e => (
-          (e.name.toLowerCase().indexOf(lcText) === 0)
+          (e.firstName.toLowerCase().indexOf(lcText) === 0)
         )
       );
     } else {

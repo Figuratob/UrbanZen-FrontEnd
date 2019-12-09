@@ -1,17 +1,18 @@
 <button mat-icon-button aria-label="Close" (click)="onNoClick()">
   <span aria-hidden="true" >&times;</span>
 </button>
-<h1 mat-dialog-title>{{lesson.lessonDayOfWeek}}, {{lesson.lessonDate}}</h1>
+<h1 mat-dialog-title>{{lesson.startDate.format('dddd')}}, {{lesson.startDate.format('HH:mm')}}</h1>
 
-<h1 mat-dialog-title>{{lesson.nameOfLesson}}</h1>
+<h1 mat-dialog-title>{{lesson.name}}</h1>
 
-<h6><img src="{{lesson.teacher.photo}}" class="img-fluid">{{lesson.teacher.name}}</h6>
-<h6>{{lesson.lessonStartTime}}-{{lesson.lessonEndTime}} <span class="badge badge-primary badge-pill">
-     Vabu kohti: {{lesson.availableSpaces-lesson.booked}}
+<h6><img src="{{lesson.teacher.photoContentType}}" alt="photo" class="img-fluid"></h6>
+<h6>{{lesson.teacher.firstName}}</h6>
+<h6>{{lesson.startDate.format('HH:mm')}}-{{lesson.endDate.format('HH:mm')}} <span class="badge badge-primary badge-pill">
+     Vabu kohti: {{lesson.remainSpaces}}
     </span></h6>
 <div mat-dialog-content>
 
-  <p>{{lesson.lessonDescription}}</p>
+  <p>{{lesson.description}}</p>
 
 </div>
 <div mat-dialog-actions>

@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Ootame Sind</h1>
 
 <div mat-dialog-content>
-<h3>{{lesson.lessonDayOfWeek}}, {{lesson.lessonDate}}</h3>
-<h6>{{lesson.lessonStartTime}}-{{lesson.lessonEndTime}}</h6>
-<h3>{{lesson.nameOfLesson}}</h3>
-<h6>Õpetaja: {{lesson.teacher.name}}</h6>
+<h3>{{lesson.startDate.format('dddd')}}, {{lesson.startDate.format('DD.MM.YYYY')}}</h3>
+<h6>{{lesson.startDate.format('HH:mm')}}-{{lesson.endDate.format('HH:mm')}}</h6>
+<h3>{{lesson.name}}</h3>
+<h6>Õpetaja: {{lesson.teacher.firstName}} {{lesson.teacher.lastName}}</h6>
 
 </div>
 

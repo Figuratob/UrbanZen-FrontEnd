@@ -6,7 +6,7 @@ import {MatDialogModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './modules/general/not-found/not-found.component';
 import { HeaderModule } from './components/header/header.module';
-import { TimetableModule } from './modules/application//timetable/timetable.module';
+import { TimetableModule } from './modules/application/timetable/timetable.module';
 import { ConfigService } from './services/config/config.service';
 import {BookingsModule} from './modules/general/bookings/bookings.module';
 import {ScheduleModule} from './modules/general/schedule/schedule.module';

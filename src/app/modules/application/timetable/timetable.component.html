@@ -1,19 +1,19 @@
 <h2 *ngIf="showCaption"> Nädal {{firstDayOfWeek}}-{{lastDayOfWeek}}</h2>
 
-<ul class="list-group" *ngFor="let day of timetable" >
+<ul class="list-group" *ngFor="let timetable of timetables" >
 
   <li class="list-group-item d-flex justify-content-between align-items-center">
-     {{day.day.dayOfWeek}}, {{day.day.date}}
+     {{timetable.timetableDay.format('dddd')}}, {{timetable.timetableDay.format('DD.MM.YYYY')}}
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center"
-      *ngFor="let lesson of day.lessons">
-    {{lesson.lessonStartTime}}-{{lesson.lessonEndTime}} {{lesson.nameOfLesson}}
+      *ngFor="let lesson of timetable.lessons">
+    {{lesson.startDate.format('HH:mm')}}-{{lesson.endDate.format('HH:mm')}} {{lesson.name}}, {{lesson.teacher.firstName}}
     <span class="badge badge-primary badge-pill">
-     {{lesson.booked}}/{{lesson.availableSpaces}}
+     {{lesson.remainSpaces}}/{{lesson.availableSpaces}}
     </span>
 
     <button mat-raised-button
-             (click)="openDialog(lesson, day, showBookingModalNotCancelModal)"><mat-icon> > </mat-icon></button>
+             (click)="openDialog(lesson, timetable, showBookingModalNotCancelModal)"><mat-icon> > </mat-icon></button>
   </li>
 
 </ul>

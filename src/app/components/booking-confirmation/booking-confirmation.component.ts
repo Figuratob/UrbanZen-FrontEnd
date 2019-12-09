@@ -1,11 +1,12 @@
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
-import {Day, Lesson} from '../../modules/application/timetable/timetable.component';
+import {Lesson} from '../../model/timetable.model';
 import {Router} from '@angular/router';
+import {Moment} from "moment";
 
 export interface DialogData {
   lesson: Lesson;
-  day: Day;
+  day: Moment;
 }
 @Component({
   selector: 'app-booking-confirmation-component',
@@ -15,7 +16,7 @@ export interface DialogData {
 export class BookingConfirmationComponent {
 
   lesson: Lesson;
-  day: Day;
+  day: Moment;
 
   constructor(
 
