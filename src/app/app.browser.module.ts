@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
     AppModule,
     BrowserModule.withServerTransition({ appId: 'ganatan' }),
     BrowserTransferStateModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   bootstrap: [AppComponent],
 })

@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { TimetableComponent } from './timetable.component';
+import {TimetableComponent} from './timetable.component';
 
 const routes: Routes = [
-  { path: '', component: TimetableComponent },
+  {path: '', component: TimetableComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TimetableRoutingModule { }
+export class TimetableRoutingModule {
+}

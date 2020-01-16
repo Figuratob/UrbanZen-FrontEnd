@@ -1,19 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
   })
 };
+
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   filterJsonItem(value: any, id: any) {
     let dataTmp = null;
@@ -39,7 +41,7 @@ export class ItemsService {
     } else {
       resultCount = value.length;
     }
-    return { count: resultCount };
+    return {count: resultCount};
   }
 
   filterJsonItems(value: any, text: any, itemsPerPage: number, page: number) {
@@ -66,10 +68,16 @@ export class ItemsService {
   }
 
   getItemsCount(api: boolean, url: any, query: any): Observable<any> {
-    if (api) { url = url + '/count'; } else { url = url + '.json'; }
+    if (api) {
+      url = url + '/count';
+    } else {
+      url = url + '.json';
+    }
     let filter = '';
     if (query !== undefined) {
-      if ((query !== '') && (query !== null)) { filter = '?q=' + query; }
+      if ((query !== '') && (query !== null)) {
+        filter = '?q=' + query;
+      }
     }
     const urlParameter = url + filter;
     let result: Observable<any>;
@@ -90,7 +98,9 @@ export class ItemsService {
   }
 
   getItems(api: boolean, url: string, itemsPerPage: number, page: number, query: any): Observable<any> {
-    if (!api) { url = url + '.json'; }
+    if (!api) {
+      url = url + '.json';
+    }
     let filter = '';
     if ((itemsPerPage !== undefined) || (page !== undefined) || (query !== undefined)) {
       let limit: number;
@@ -132,7 +142,9 @@ export class ItemsService {
   }
 
   getItem(api: boolean, url: any, id: number): Observable<any> {
-    if (!api) { url = url + '.json'; }
+    if (!api) {
+      url = url + '.json';
+    }
     let result: any = {};
     if (id !== undefined) {
       if (api) {

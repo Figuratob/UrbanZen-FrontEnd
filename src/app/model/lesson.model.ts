@@ -35,6 +35,6 @@ export class Lesson {
     this.availableSpaces = availableSpaces;
     this.description = description;
     this.teacher = teacher;
-    this.bookings=bookings;
+    this.bookings = bookings;
   }
 }

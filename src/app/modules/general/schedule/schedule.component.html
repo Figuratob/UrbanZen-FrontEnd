@@ -1,4 +1,7 @@
-<h1>Tunniplaan</h1>
-
-<app-timetable></app-timetable>
-
+<h1>Schedule</h1>
+<div class="row">
+  <div class="col">
+    <app-timetable [showCaption]="true" [showBookingModalNotCancelModal]="true" [timetables]="timetables"
+                   [firstDayOfWeek]="firstDayOfWeek" [lastDayOfWeek]="lastDayOfWeek"></app-timetable>
+  </div>
+</div>
