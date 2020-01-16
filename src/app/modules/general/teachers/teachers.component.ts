@@ -15,17 +15,11 @@ export class TeachersComponent implements OnInit {
 
 
   constructor(
-    protected teacherService: TeacherService
-  ) {}
+    protected teacherService: TeacherService) {
+  }
 
   ngOnInit(): void {
     this.loadAll();
-  }
-
-
-  openFile(photoContentType: string, photo: any) {
-    // return this.dataUtils.openFile(contentType, field);
-
   }
 
   private loadAll() {
@@ -36,7 +30,7 @@ export class TeachersComponent implements OnInit {
         map((res: HttpResponse<Teacher[]>) => res.body)
       )
       .subscribe(
-        (res: Teacher[])=>{
+        (res: Teacher[]) => {
           this.teachers = res;
         }
       )
