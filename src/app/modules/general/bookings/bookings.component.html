@@ -1,3 +1,10 @@
-<h1>Minu broneeringud</h1>
-<app-timetable [showCaption] = "false" [showBookingModalNotCancelModal] = "false"></app-timetable>
+<h1>My bookings</h1>
+
+<app-timetable [showCaption]="false"
+               [showBookingModalNotCancelModal]="false"
+               [timetables]="timetables"
+               [parentComponent]="this">
+
+</app-timetable>
+
 

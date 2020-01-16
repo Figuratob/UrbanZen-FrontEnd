@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BookingsComponent } from './bookings.component';
-import { BookingsRoutingModule } from './bookings-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BookingsComponent} from './bookings.component';
+import {BookingsRoutingModule} from './bookings-routing.module';
 import {TimetableModule} from '../../application/timetable/timetable.module';
 
 @NgModule({
@@ -19,4 +19,5 @@ import {TimetableModule} from '../../application/timetable/timetable.module';
   ],
 })
 
-export class BookingsModule { }
+export class BookingsModule {
+}

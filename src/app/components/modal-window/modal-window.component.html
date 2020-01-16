@@ -1,30 +1,45 @@
-<button mat-icon-button aria-label="Close" (click)="onNoClick()">
-  <span aria-hidden="true" >&times;</span>
-</button>
-<h1 mat-dialog-title>{{lesson.startDate.format('dddd')}}, {{lesson.startDate.format('HH:mm')}}</h1>
+<div class="modal-header">
+  <div class="row">
+    <div class="col-3 pl-2">
+      <img src="{{lessonEntry.lesson.teacher.photoContentType}}" alt=" " class="img-fluid">
+      <h6>{{lessonEntry.lesson.teacher.firstName}}</h6>
+    </div>
 
-<h1 mat-dialog-title>{{lesson.name}}</h1>
+    <div class="col-9">
+      <h6>{{lessonEntry.lesson.name}}</h6>
+      <h6>{{lessonEntry.lesson.startDate.format('dddd')}}
+        {{lessonEntry.lesson.startDate.format('DD.MM.YYYY')}}</h6>
+      <h6>{{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}</h6>
+      <span class="badge badge-primary badge-pill">Remain spaces: {{lessonEntry.lesson.remainSpaces}}</span>
 
-<h6><img src="{{lesson.teacher.photoContentType}}" alt="photo" class="img-fluid"></h6>
-<h6>{{lesson.teacher.firstName}}</h6>
-<h6>{{lesson.startDate.format('HH:mm')}}-{{lesson.endDate.format('HH:mm')}} <span class="badge badge-primary badge-pill">
-     Vabu kohti: {{lesson.remainSpaces}}
-    </span></h6>
-<div mat-dialog-content>
+    </div>
+  </div>
+</div>
 
-  <p>{{lesson.description}}</p>
+<div class="modal-body">
+  <p class="mx-3">{{lessonEntry.lesson.description}}</p>
 
 </div>
-<div mat-dialog-actions>
 
-  <button mat-raised-button
-          (click)="openDialog(lesson, day, data.showBookingModalNotCancelModal)">
-    <span class="badge badge-primary badge-pill" *ngIf="data.showBookingModalNotCancelModal;else cancel">Broneeri</span>
-      <ng-template #cancel>
-    <span class="badge badge-primary badge-pill">Tühista</span>
-      </ng-template>
+<div class="modal-footer">
 
+  <div>
 
-  </button>
+    <button type="button" class="btn btn-light mr-2" aria-label="Close" (click)="onNoClick()">Back</button>
+
+    <button class="btn btn-primary" *ngIf="data.showBookingModalNotCancelModal;else cancel"
+            (click)="openDialog(lessonEntry, day, data.showBookingModalNotCancelModal)">Book
+    </button>
+    <ng-template #cancel>
+      <button class="btn-outline-primary" (click)="openDialog(lessonEntry, day, data.showBookingModalNotCancelModal)">
+        Delete
+      </button>
+    </ng-template>
+
+  </div>
 
 </div>
+
+
+
+
