@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { ScheduleComponent } from './modules/general/schedule/schedule.component';
-import { NotFoundComponent } from './modules/general/not-found/not-found.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {ScheduleComponent} from './modules/general/schedule/schedule.component';
+import {NotFoundComponent} from './modules/general/not-found/not-found.component';
+import {RegisterComponent} from "./modules/general/account/register/register.component";
+import {SettingsComponent} from "./modules/general/account/settings/settings.component";
+import {LoginComponent} from "./modules/general/account/login/login.component";
+import {PasswordComponent} from "./modules/general/account/password/password.component";
 
 const routes: Routes = [
 
-  { path: '', component: ScheduleComponent },
+  {path: '', component: ScheduleComponent},
   {
     path: 'teachers',
     loadChildren: () => import('./modules/general/teachers/teachers.module').then(mod => mod.TeachersModule)
@@ -15,10 +19,26 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/bookings/bookings.module').then(mod => mod.BookingsModule)
   },
   {
-    path: 'my-account',
-    loadChildren: () => import('./modules/general/my-account/my-account.module').then(mod => mod.MyAccountModule)
+    path: 'account',
+    loadChildren: () => import('./modules/general/account/account.module').then(mod => mod.AccountModule)
   },
-  { path: '**', component: NotFoundComponent }
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent
+  },
+  {
+    path: 'password',
+    component: PasswordComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
@@ -26,4 +46,5 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

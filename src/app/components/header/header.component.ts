@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {AuthenticationService} from '../../services/authentication.service';
+import {Router} from "@angular/router";
+import {User} from "../../model/user.model";
+import {AccountService} from "../../modules/general/account/account.service";
+import {SessionStorageService} from "ngx-webstorage";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +13,44 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
 
   @Input() title: any;
+  isNavbarCollapsed: boolean = false;
 
-  constructor() { }
 
+  currentUser: User;
+
+  constructor(
+    // private loginService: LoginService,
+    private sessionStorage: SessionStorageService,
+    private accountService: AccountService,
+    // private profileService: ProfileService,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.isNavbarCollapsed = true;
+  }
+
+
+  getImageUrl() {
+    // return this.isAuthenticated() ? this.accountService.getImageUrl() : null;
+  }
+
+  logout() {
+    this.collapseNavbar();
+    this.authenticationService.logout();
+    this.router.navigate(['']);
+
+  }
+
+  collapseNavbar() {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+  }
+
+  // login() {
+  //   // this.modalRef = this.loginModalService.open();
+  // }
+
+  isAuthenticated() {
+    return this.accountService.isAuthenticated();
+  }
 }

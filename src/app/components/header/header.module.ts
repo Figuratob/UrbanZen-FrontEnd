@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { HeaderRoutingModule } from './header-routing.module';
-import { HeaderComponent } from './header.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HeaderRoutingModule} from './header-routing.module';
+import {HeaderComponent} from './header.component';
+import {NgbCollapseModule, NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -11,10 +11,13 @@ import { HeaderComponent } from './header.component';
   ],
   imports: [
     CommonModule,
-    HeaderRoutingModule
+    HeaderRoutingModule,
+    NgbDropdownModule,
+    NgbCollapseModule
   ],
   exports: [
     HeaderComponent
   ],
 })
-export class HeaderModule { }
+export class HeaderModule {
+}
