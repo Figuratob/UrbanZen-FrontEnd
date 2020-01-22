@@ -26,7 +26,7 @@
           </a>
         </li>
 
-        <li class="nav-item active">
+        <li *ngSwitchCase="true" class="nav-item active">
           <a class="nav-link" routerLink="/bookings" (click)="collapseNavbar()">
             <i class="fab fa-github mr-2" data-toggle="collapse" data-target="#navbarsExampleDefault"></i>My bookings
           </a>
@@ -39,7 +39,7 @@
         </li>
 
         <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}" [ngSwitch]="true">
+            [routerLinkActiveOptions]="{exact: true}" >
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">
                     <i class="fas fa-user"></i>
@@ -53,14 +53,14 @@
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
             <li *ngSwitchCase="true">
-              <a class="dropdown-item" routerLink="settings" routerLinkActive="active" (click)="collapseNavbar()">
+              <a class="dropdown-item" routerLink="/settings" routerLinkActive="active" (click)="collapseNavbar()">
                 <i class="fas fa-wrench" fixedWidth="true"></i>
                 <span class="ml-1">My data</span>
               </a>
             </li>
 
             <li *ngSwitchCase="true">
-              <a class="dropdown-item" routerLink="password" routerLinkActive="active" (click)="collapseNavbar()">
+              <a class="dropdown-item" routerLink="/password" routerLinkActive="active" (click)="collapseNavbar()">
                 <i class="fas fa-lock" fixedWidth="true"></i>
                 <span class="ml-1">Password</span>
               </a>
@@ -71,14 +71,14 @@
                 <span class="ml-1">Sign out</span>
               </a>
             </li>
-            <li *ngSwitchCase="true">
-              <a class="dropdown-item" routerLink="login" id="login">
+            <li *ngSwitchCase="false">
+              <a class="dropdown-item" routerLink="login" routerLinkActive="active" id="login">
                 <i class="fas fa-sign-in-alt" fixedWidth="true"></i>
                 <span class="ml-1">Sign in</span>
               </a>
             </li>
-            <li *ngSwitchCase="true">
-              <a class="dropdown-item" routerLink="register" routerLinkActive="active" (click)="collapseNavbar()">
+            <li *ngSwitchCase="false">
+              <a class="dropdown-item" routerLink="/register" routerLinkActive="active" (click)="collapseNavbar()">
                 <i class="fas fa-user-plus" fixedWidth="true"></i>
                 <span class="ml-1">Register</span>
               </a>
