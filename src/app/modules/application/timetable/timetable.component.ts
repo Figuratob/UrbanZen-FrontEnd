@@ -23,9 +23,9 @@ export class TimetableComponent {
   timetables: Timetable[];
 
   @Input()
-  firstDayOfWeek: any;
+  firstDayOfWeek: string;
   @Input()
-  lastDayOfWeek: any;
+  lastDayOfWeek: string;
 
   constructor(public dialog: MatDialog) {
   }

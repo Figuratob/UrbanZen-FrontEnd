@@ -3,8 +3,6 @@ import {Injectable} from '@angular/core';
 import {SessionStorageService} from 'ngx-webstorage';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
-
-// import { SERVER_API_URL } from 'app/app.constants';
 import {Account} from '../../../model/account.model';
 
 @Injectable({providedIn: 'root'})
@@ -27,46 +25,16 @@ export class AccountService {
     return this.http.post('http://localhost:8080/api/account', account, {observe: 'response'});
   }
 
-  authenticate(identity) {
-    this.userIdentity = identity;
-    this.authenticated = identity !== null;
+  logout(): void {
+    this.authenticated = false;
+    this.userIdentity = undefined;
     this.authenticationState.next(this.userIdentity);
-  }
-
-  hasAnyAuthority(authorities: string[]): boolean {
-    if (!this.authenticated || !this.userIdentity || !this.userIdentity.authorities) {
-      return false;
-    }
-
-    for (let i = 0; i < authorities.length; i++) {
-      if (this.userIdentity.authorities.includes(authorities[i])) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  hasAuthority(authority: string): Promise<boolean> {
-    if (!this.authenticated) {
-      return Promise.resolve(false);
-    }
-
-    return this.identity().then(
-      id => {
-        return Promise.resolve(id.authorities && id.authorities.includes(authority));
-      },
-      () => {
-        return Promise.resolve(false);
-      }
-    );
   }
 
   identity(force?: boolean): Promise<Account> {
     if (force) {
       this.userIdentity = undefined;
     }
-
     // check and see if we have retrieved the userIdentity data from the server.
     // if we have, reuse it by immediately resolving
     if (this.userIdentity) {
@@ -84,22 +52,20 @@ export class AccountService {
           // After retrieve the account info, the language will be changed to
           // the user's preferred language configured in the account setting
 
-          if (this.userIdentity.langKey) {
-            const langKey = this.sessionStorage.retrieve('locale') || this.userIdentity.langKey;
-            // this.languageService.changeLanguage(langKey);
-          }
+          // if (this.userIdentity.langKey) {
+          //   const langKey = this.sessionStorage.retrieve('locale') || this.userIdentity.langKey;
+          //   // this.languageService.changeLanguage(langKey);
+          // }
         } else {
           this.userIdentity = null;
           this.authenticated = false;
         }
-
         this.authenticationState.next(this.userIdentity);
         return this.userIdentity;
       })
       .catch(err => {
-        this.userIdentity = null;
-        this.authenticated = false;
-        this.authenticationState.next(this.userIdentity);
+        console.log("exception caught: ", err);
+        this.logout();
         return null;
       });
   }
@@ -107,5 +73,4 @@ export class AccountService {
   isAuthenticated(): boolean {
     return this.authenticated;
   }
-
 }

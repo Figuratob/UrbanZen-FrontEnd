@@ -1,4 +1,3 @@
-<h2 *ngIf="showCaption"> Week: {{firstDayOfWeek}}-{{lastDayOfWeek}}</h2>
 
 <ul class="list-group" *ngFor="let timetable of timetables">
 
@@ -10,10 +9,10 @@
 
     <button mat-raised-button class="btn-block"
             (click)="openDialog(lessonEntry, timetable, showBookingModalNotCancelModal)">
-      {{lessonEntry.lesson.startDate.format('HH:mm')}}
-      -{{lessonEntry.lesson.endDate.format('HH:mm')}} {{lessonEntry.lesson.name}}
-      , {{lessonEntry.lesson.teacher.firstName}}
-      <span class="badge badge-primary badge-pill">{{lessonEntry.lesson.remainSpaces}}
+
+      {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
+      {{lessonEntry.lesson.name}}, {{lessonEntry.lesson.teacher.firstName}}
+      <span *ngIf="showCaption" class="badge badge-primary badge-pill">{{lessonEntry.lesson.remainSpaces}}
         /{{lessonEntry.lesson.availableSpaces}}</span>
 
     </button>

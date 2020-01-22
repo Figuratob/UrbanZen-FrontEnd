@@ -6,6 +6,7 @@ import {RegisterComponent} from "./modules/general/account/register/register.com
 import {SettingsComponent} from "./modules/general/account/settings/settings.component";
 import {LoginComponent} from "./modules/general/account/login/login.component";
 import {PasswordComponent} from "./modules/general/account/password/password.component";
+import {AuthGuard} from "./components/auth.guard";
 
 const routes: Routes = [
 
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'bookings',
-    loadChildren: () => import('./modules/general/bookings/bookings.module').then(mod => mod.BookingsModule)
+    loadChildren: () => import('./modules/general/bookings/bookings.module').then(mod => mod.BookingsModule), canActivate :[AuthGuard]
   },
   {
     path: 'account',
@@ -28,11 +29,11 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    component: SettingsComponent
+    component: SettingsComponent, canActivate: [AuthGuard]
   },
   {
     path: 'password',
-    component: PasswordComponent
+    component: PasswordComponent, canActivate: [AuthGuard]
   },
   {
     path: 'login',
