@@ -7,6 +7,7 @@ import * as moment from "moment";
 import {TimetableDTO} from "../../../model/timetableDTO.model";
 import {LessonEntry} from "../../../model/lesson-entry.model";
 import {Lesson} from "../../../model/lesson.model";
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-schedule',
@@ -16,24 +17,38 @@ import {Lesson} from "../../../model/lesson.model";
 })
 
 export class ScheduleComponent implements OnInit {
+  showCaption: boolean;
   timetables: Timetable[];
-  firstDayOfWeek: any;
-  lastDayOfWeek: any;
+  firstDayOfWeek: Moment;
+  lastDayOfWeek: Moment;
 
   constructor(private scheduleService: ScheduleService) {
   }
 
   ngOnInit(): void {
+    this.showCaption = true;
+
+    let now = moment();
+    let thisMonday = moment(now).startOf('isoWeek');
+    let thisSunday = moment(now).endOf('isoWeek');
+
+    this.firstDayOfWeek = thisMonday;
+    this.lastDayOfWeek = thisSunday;
+
+    this.refreshTimetable(thisMonday, thisSunday);
+  }
+
+  public refreshTimetable(firstDayOfWeek: Moment, lastDayOfWeek: Moment) {
     this.scheduleService
-      .query()
+      .getData(firstDayOfWeek,lastDayOfWeek)
       .pipe(
         filter((res: HttpResponse<TimetableDTO[]>) => res.ok),
         map((res: HttpResponse<TimetableDTO[]>) => this.mapToTimetable(res))
       )
       .subscribe((data: Timetable[]) => {
         this.timetables = data;
-        this.firstDayOfWeek = moment(this.timetables[0].timetableDay).format('DD.MM.YYYY');
-        this.lastDayOfWeek = moment(this.timetables[6].timetableDay).format('DD.MM.YYYY');
+        this.firstDayOfWeek = moment(this.timetables[0].timetableDay);
+        this.lastDayOfWeek = moment(this.timetables[6].timetableDay);
       });
   }
 
@@ -55,6 +70,22 @@ export class ScheduleComponent implements OnInit {
       });
     });
     return timetables;
+  }
+
+  previousWeek(firstDayOfWeek: Moment, lastDayOfWeek: Moment) {
+
+    let previousMonday = moment(firstDayOfWeek).subtract(7,'days');
+    let previousSunday = moment(lastDayOfWeek).subtract(7,'days');
+
+    this.refreshTimetable(previousMonday, previousSunday);
+  }
+
+  nextWeek(firstDayOfWeek: Moment, lastDayOfWeek: Moment) {
+
+    let nextMonday = moment(firstDayOfWeek).add(7,'days');
+    let nextSunday = moment(lastDayOfWeek).add(7,'days');
+
+    this.refreshTimetable(nextMonday, nextSunday);
   }
 }
 

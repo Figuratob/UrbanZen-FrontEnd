@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Lesson} from "../../../model/lesson.model";
 import * as moment from "moment";
 import {TimetableDTO} from "../../../model/timetableDTO.model";
+import { Moment } from 'moment';
 
 type EntityArrayResponseType = HttpResponse<TimetableDTO[]>;
 
@@ -14,15 +15,25 @@ export class ScheduleService {
   constructor(protected http: HttpClient) {
   }
 
-  getData() {
-    return this.http.get('http://localhost:8080/api/getTimetable')
-  }
+  getData(firstDayOfWeek: Moment, lastDayOfWeek: Moment): Observable<EntityArrayResponseType> {
 
-  query(req?: any): Observable<EntityArrayResponseType> {
+    let firstDayOfWeekFormatted = firstDayOfWeek.format('YYYY-MM-DD');
+    let lastDayOfWeekFormatted = lastDayOfWeek.format('YYYY-MM-DD');
+
+    let params = {
+      firstDayOfWeek: firstDayOfWeekFormatted,
+      lastDayOfWeek: lastDayOfWeekFormatted
+    }
     return this.http
-      .get<TimetableDTO[]>('http://localhost:8080/api/getTimetable', {observe: 'response'})
+      .get<TimetableDTO[]>('http://localhost:8080/api/getTimetableByDates', {params, observe: 'response'})
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
+
+  // query(req?: any): Observable<EntityArrayResponseType> {
+  //   return this.http
+  //     .get<TimetableDTO[]>('http://localhost:8080/api/getTimetable', {observe: 'response'})
+  //     .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  // }
 
   private convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
