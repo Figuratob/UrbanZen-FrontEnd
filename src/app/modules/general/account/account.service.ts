@@ -108,15 +108,4 @@ export class AccountService {
     return this.authenticated;
   }
 
-  isIdentityResolved(): boolean {
-    return this.userIdentity !== undefined;
-  }
-
-  getAuthenticationState(): Observable<any> {
-    return this.authenticationState.asObservable();
-  }
-
-  getImageUrl(): string {
-    return this.isIdentityResolved() ? this.userIdentity.imageUrl : null;
-  }
 }

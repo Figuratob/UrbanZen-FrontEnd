@@ -30,11 +30,6 @@ export class HeaderComponent {
     this.isNavbarCollapsed = true;
   }
 
-
-  getImageUrl() {
-    // return this.isAuthenticated() ? this.accountService.getImageUrl() : null;
-  }
-
   logout() {
     this.collapseNavbar();
     this.authenticationService.logout();
