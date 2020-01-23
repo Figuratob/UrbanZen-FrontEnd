@@ -7,7 +7,7 @@
   <li class="list-group-item d-flex justify-content-between align-items-center"
       *ngFor="let lessonEntry of timetable.lessonEntries">
 
-    <button mat-raised-button class="btn-block"
+    <button mat-raised-button class="btn-block" [disabled]="lessonEntry.lesson.startDate.isBefore(now)"
             (click)="openDialog(lessonEntry, timetable, showBookingModalNotCancelModal)">
 
       {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
