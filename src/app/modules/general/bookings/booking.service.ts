@@ -35,7 +35,7 @@ export class BookingService {
   query(req?: any): Observable<EntityArrayResponseType> {
     // const options = createRequestOption(req);
     return this.http
-      .get<Booking[]>('http://localhost:8080/api/bookings', {observe: 'response'})
+      .get<Booking[]>('http://localhost:8080/api/userBookings', {observe: 'response'})
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
