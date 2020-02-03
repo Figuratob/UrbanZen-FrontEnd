@@ -5,85 +5,85 @@
       <span style="color:white">{{ title }}</span>
     </a>
 
-<!--    <a class="navbar-toggler d-lg-none" data-toggle="collapse" href="#navbarResponsive" role="button"-->
-<!--       aria-expanded="false" aria-controls="navbarResponsive" aria-label="Toggle navigation">-->
-<!--      <i class="fas fa-bars"></i>-->
-<!--    </a>-->
-
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+    <button class="navbar-toggler d-lg-none" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarResponsive" [ngSwitch]="isAuthenticated()">
+    <div  [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" [ngSwitch]="isAuthenticated()">
 
       <ul class="navbar-nav ml-auto font-weight-bold">
 
-        <li class="nav-item active" data-toggle="collapse" data-target="#navbarResponsive">
-          <a class="nav-link navlink-toggler" routerLink="/" >
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/" (click)="isNavbarCollapsed = true">
             <i class="fas fa-home mr-2" ></i>Schedule
           </a>
         </li>
 
-        <li class="nav-item active" data-toggle="collapse" data-target="#navbarResponsive">
+        <li class="nav-item active" (click)="isNavbarCollapsed = true">
           <a class="nav-link" routerLink="/teachers" >
             <i class="fas fa-th-list mr-2" ></i>Teachers
           </a>
         </li>
 
-        <li *ngSwitchCase="true" class="nav-item active" data-toggle="collapse" data-target="#navbarResponsive">
+        <li *ngSwitchCase="true" class="nav-item active" (click)="isNavbarCollapsed = true">
           <a class="nav-link" routerLink="/bookings" >
             <i class="fab fa-github mr-2"></i>My bookings
           </a>
         </li>
 
-        <li class="nav-item active">
+        <li class="nav-item active" (click)="isNavbarCollapsed = true">
           <a class="nav-link" href="https://urbanzen.ee">
             <i class="far fa-question-circle mr-2"></i>Studio
           </a>
         </li>
 
         <li ngbDropdown class="nav-item pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+
           <a class="nav-link dropdown" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                     <i class="fas fa-user" ></i>
                     <span>
                       My account
                     </span>
           </a>
+
           <ul ngbDropdownMenu aria-labelledby="account-menu">
 
-            <li *ngSwitchCase="true" data-toggle="collapse" data-target="#navbarResponsive">
+            <li *ngSwitchCase="true" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/settings" routerLinkActive="active">
                 <i class="fas fa-wrench" fixedWidth="true"></i>
                 <span class="ml-1">My data</span>
               </a>
             </li>
 
-            <li *ngSwitchCase="true" data-toggle="collapse" data-target="#navbarResponsive">
+            <li *ngSwitchCase="true" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/password" routerLinkActive="active">
                 <i class="fas fa-lock" fixedWidth="true"></i>
                 <span class="ml-1">Password</span>
               </a>
             </li>
 
-            <li *ngSwitchCase="true" data-toggle="collapse" data-target="#navbarResponsive">
+            <li *ngSwitchCase="true">
               <a ngbDropdownItem (click)="logout()" id="logout">
                 <i class="fas fa-sign-out-alt" fixedWidth="true"></i>
                 <span class="ml-1">Sign out</span>
               </a>
             </li>
-            <li *ngSwitchCase="false" data-toggle="collapse" data-target="#navbarResponsive">
+
+            <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/login" routerLinkActive="active">
                 <i class="fas fa-sign-in-alt" fixedWidth="true"></i>
                 <span class="ml-1">Sign in</span>
               </a>
             </li>
-            <li *ngSwitchCase="false" data-toggle="collapse" data-target="#navbarResponsive">
+
+            <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/register" routerLinkActive="active">
                 <i class="fas fa-user-plus" fixedWidth="true"></i>
                 <span class="ml-1">Register</span>
               </a>
             </li>
+
           </ul>
         </li>
       </ul>

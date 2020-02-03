@@ -12,30 +12,20 @@ import {SessionStorageService} from "ngx-webstorage";
 export class HeaderComponent {
 
   @Input() title: any;
-  // isNavbarCollapsed: boolean;
+
+  public isNavbarCollapsed = true;
 
   constructor(
     private sessionStorage: SessionStorageService,
     private accountService: AccountService,
     private router: Router,
     private authenticationService: AuthenticationService
-  ) {
-    // this.isNavbarCollapsed = true;
-  }
+  ) {}
 
   logout() {
-    // this.collapseNavbar();
+    this.isNavbarCollapsed = true;
     this.authenticationService.logout();
     this.router.navigate(['']);
-  }
-
-  collapseNavbar() {
-
-    // console.log('before Click, isNavbarCollapsed: ' + this.isNavbarCollapsed);
-    // this.isNavbarCollapsed = false;
-    // console.log('after Click, isNavbarCollapsed: ' + this.isNavbarCollapsed);
-
-    // this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
 
   login() {
@@ -46,12 +36,5 @@ export class HeaderComponent {
     // console.log('header component is authenticated called ' + this.accountService.isAuthenticated());
     let authenticated = this.accountService.isAuthenticated();
     return authenticated;
-  }
-
-  toggleNavbar() {
-
-// console.log('before Toggle, isNavbarCollapsed: ' + this.isNavbarCollapsed);
-//     this.isNavbarCollapsed = !this.isNavbarCollapsed;
-//     console.log('after Toggle, isNavbarCollapsed: ' + this.isNavbarCollapsed);
   }
 }
