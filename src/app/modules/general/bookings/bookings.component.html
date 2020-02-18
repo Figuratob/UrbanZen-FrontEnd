@@ -1,10 +1,15 @@
-<h1>My bookings</h1>
+<div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
 
-<app-timetable [showCaption]="false"
-               [showBookingModalNotCancelModal]="false"
-               [timetables]="timetables"
-               [parentComponent]="this">
+      <h2>{{'bookings.title' | translate}}</h2>
 
-</app-timetable>
-
+      <app-timetable [showCaption]="false"
+                     [showBookingModalNotCancelModal]="false"
+                     [timetables]="timetables"
+                     [parentComponent]="this">
+      </app-timetable>
+    </div>
+  </div>
+</div>
 

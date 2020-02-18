@@ -3,17 +3,19 @@ import {CommonModule} from '@angular/common';
 import {BookingsComponent} from './bookings.component';
 import {BookingsRoutingModule} from './bookings-routing.module';
 import {TimetableModule} from '../../application/timetable/timetable.module';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
     BookingsComponent,
 
   ],
-  imports: [
-    CommonModule,
-    BookingsRoutingModule,
-    TimetableModule
-  ],
+    imports: [
+        CommonModule,
+        BookingsRoutingModule,
+        TimetableModule,
+        TranslateModule
+    ],
   exports: [
     BookingsComponent
   ],
