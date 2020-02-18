@@ -1,5 +1,5 @@
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Component, Inject} from '@angular/core';
+import {AfterViewInit, Component, Inject} from '@angular/core';
 import {Lesson} from '../../model/lesson.model';
 import {BookingConfirmationComponent} from '../booking-confirmation/booking-confirmation.component';
 import {BookingCancellationComponent} from '../booking-cancellation/booking-cancellation.component';
@@ -9,6 +9,8 @@ import {HttpResponse} from "@angular/common/http";
 import {Booking} from 'src/app/model/booking.model';
 import {BookingService} from "../../modules/general/bookings/booking.service";
 import {LessonEntry} from "../../model/lesson-entry.model";
+import {TranslateService} from "@ngx-translate/core";
+import {AuthenticationService} from "../../services/authentication.service";
 
 export interface DialogData {
   lesson: Lesson;
@@ -25,26 +27,35 @@ export interface DialogData {
   templateUrl: 'modal-window.component.html',
   providers: [BookingService]
 })
-export class ModalWindowComponent {
+export class ModalWindowComponent implements AfterViewInit {
 
   lessonEntry: LessonEntry;
   day: Moment;
   error: any;
+  language: string;
 
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<ModalWindowComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: DialogData,
-    protected bookingService: BookingService) {
-
+    protected bookingService: BookingService,
+    protected translateService: TranslateService,
+    protected authenticationService: AuthenticationService) {
     this.lessonEntry = data.lessonEntry;
     this.day = data.day;
+    this.language = translateService.currentLang;
+    console.log('lang from modalWindow: ' + this.language);
+  }
+
+  ngAfterViewInit(): void {
+    this.translateService.onLangChange.subscribe( LangChangeEvent => {
+      this.language = LangChangeEvent.lang;
+    });
   }
 
   openDialog(lessonEntry: any, day: any, showBookingModalNotCancelModal: boolean): void {
     if (showBookingModalNotCancelModal) {
-
       this.subscribeToSaveResponse(this.bookingService.createBook(this.lessonEntry.lesson.id));
 
     } else {
@@ -64,14 +75,14 @@ export class ModalWindowComponent {
   private subscribeToSaveResponse(result: Observable<HttpResponse<Booking>>) {
     result.subscribe((response) => {
 
-      const dialogRef = this.dialog.open(BookingConfirmationComponent, {
+      this.dialog.open(BookingConfirmationComponent, {
         width: '360px',
         data: {lesson: response.body.lesson, error: null, showError: false}
       });
 
     }, (error: any) => {
 
-      const dialogRef = this.dialog.open(BookingConfirmationComponent, {
+      this.dialog.open(BookingConfirmationComponent, {
         width: '360px',
         data: {error: error, showError: true}
       });
@@ -81,7 +92,7 @@ export class ModalWindowComponent {
   private subscribeToCancelResponse(result: Observable<HttpResponse<Booking>>) {
     result.subscribe((response) => {
 
-      const dialogRef = this.dialog.open(BookingCancellationComponent, {
+      this.dialog.open(BookingCancellationComponent, {
         width: '360px',
         data: {
           lesson: response.body.lesson, booking: this.lessonEntry.booking,
@@ -91,10 +102,15 @@ export class ModalWindowComponent {
 
     }, (error: any) => {
 
-      const dialogRef = this.dialog.open(BookingCancellationComponent, {
+      this.dialog.open(BookingCancellationComponent, {
         width: '360px',
         data: {error: error, showError: true}
       })
     })
+  }
+
+  isAuthenticated() {
+    let authenticated = this.authenticationService.isAuthenticated();
+    return authenticated;
   }
 }

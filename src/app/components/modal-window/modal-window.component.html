@@ -1,45 +1,66 @@
-<div class="modal-header">
-  <div class="row">
-    <div class="col-3 pl-2">
-      <img src="{{lessonEntry.lesson.teacher.photoContentType}}" alt=" " class="img-fluid">
-      <h6>{{lessonEntry.lesson.teacher.firstName}}</h6>
-    </div>
+<div class="modal-dialog-centered-fade" [ngSwitch]="language">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-3 pl-2">
+        <img *ngIf="lessonEntry.lesson.teacher.photo" [src]="'data:' + lessonEntry.lesson.teacher.photoContentType
+      + ';base64,' + lessonEntry.lesson.teacher.photo" class="img-fluid" style="max-height: 30px;" alt="teacher image"/>
+        <h6>
+          <div *ngSwitchCase="'en'">{{lessonEntry.lesson.teacher.firstNameEng}}</div>
+          <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.teacher.firstNameRus}}</div>
+          <div *ngSwitchDefault>{{lessonEntry.lesson.teacher.firstName}}</div>
+        </h6>
+      </div>
 
-    <div class="col-9">
-      <h6>{{lessonEntry.lesson.name}}</h6>
-      <h6>{{lessonEntry.lesson.startDate.format('dddd')}}
-        {{lessonEntry.lesson.startDate.format('DD.MM.YYYY')}}</h6>
-      <h6>{{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}</h6>
-      <span class="badge badge-primary badge-pill">Remain spaces: {{lessonEntry.lesson.remainSpaces}}</span>
-
+      <div class="col-9">
+        <h6>
+          <div *ngSwitchCase="'en'">{{lessonEntry.lesson.nameEng}}</div>
+          <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.nameRus}}</div>
+          <div *ngSwitchDefault>{{lessonEntry.lesson.name}}</div>
+        </h6>
+        <h6>{{lessonEntry.lesson.startDate.locale(language).format('dddd') | titlecase}}
+          {{lessonEntry.lesson.startDate.format('DD.MM.YYYY')}}</h6>
+        <h6>{{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}</h6>
+        <span class="badge badge-primary badge-pill">
+        {{'lesson.remainAvailableSpaces' | translate}}: {{lessonEntry.lesson.remainSpaces}}</span>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="modal-body">
-  <p class="mx-3">{{lessonEntry.lesson.description}}</p>
+  <div class="modal-body">
+    <p class="mx-3">
+    <div *ngSwitchCase="'en'">{{lessonEntry.lesson.descriptionEng}}</div>
+    <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.descriptionRus}}</div>
+    <div *ngSwitchDefault>{{lessonEntry.lesson.description}}</div>
+  </div>
 
-</div>
+  <div class="modal-footer">
 
-<div class="modal-footer">
+    <div class="row">
+      <div>
+        <button type="button" class="btn btn-light mr-2" aria-label="Close" (click)="onNoClick()">
+          {{'action.back' | translate}}
+        </button>
+      </div>
 
-  <div>
+      <div *ngIf="data.showBookingModalNotCancelModal" [ngSwitch]="isAuthenticated()">
+        <button *ngSwitchCase="true" class="btn btn-primary"
+                (click)="openDialog(lessonEntry, day, data.showBookingModalNotCancelModal)">
+          {{'action.book' | translate}}
+        </button>
+        <button *ngSwitchCase="false" class="btn btn-primary" routerLink="/login" routerLinkActive="active"
+                (click)="onNoClick()">{{'action.login' | translate}}
+        </button>
+      </div>
 
-    <button type="button" class="btn btn-light mr-2" aria-label="Close" (click)="onNoClick()">Back</button>
-
-    <button class="btn btn-primary" *ngIf="data.showBookingModalNotCancelModal;else cancel"
-            (click)="openDialog(lessonEntry, day, data.showBookingModalNotCancelModal)">Book
-    </button>
-    <ng-template #cancel>
-      <button class="btn-outline-primary" (click)="openDialog(lessonEntry, day, data.showBookingModalNotCancelModal)">
-        Delete
-      </button>
-    </ng-template>
-
+      <div *ngIf="!data.showBookingModalNotCancelModal">
+        <button class="btn btn-primary"
+                (click)="openDialog(lessonEntry, day, data.showBookingModalNotCancelModal)">
+          {{'action.delete' | translate}}
+        </button>
+      </div>
+    </div>
   </div>
 
 </div>
-
-
 
 
