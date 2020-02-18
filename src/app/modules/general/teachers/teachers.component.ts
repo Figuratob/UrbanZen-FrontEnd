@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Teacher} from "../../../model/teacher.model";
 import {HttpResponse} from "@angular/common/http";
 import {filter, map} from "rxjs/operators";
 import {TeacherService} from "./teacher.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-teachers',
@@ -10,15 +11,21 @@ import {TeacherService} from "./teacher.service";
   styleUrls: ['./teachers.component.css'],
   providers: [TeacherService]
 })
-export class TeachersComponent implements OnInit {
+export class TeachersComponent implements AfterViewInit {
   teachers: Teacher[];
-
+  language: string;
 
   constructor(
-    protected teacherService: TeacherService) {
+    protected teacherService: TeacherService,
+    protected translateService: TranslateService) {
+
+    this.language = translateService.currentLang;
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.translateService.onLangChange.subscribe( LangChangeEvent => {
+      this.language = LangChangeEvent.lang;
+    });
     this.loadAll();
   }
 

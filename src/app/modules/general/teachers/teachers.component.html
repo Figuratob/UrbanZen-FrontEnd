@@ -1,30 +1,44 @@
-<h1>Teachers</h1>
+<div>
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
 
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">photo</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">phone</th>
-      <th scope="col">email</th>
+      <h2>{{'teachers.title'|translate}}</h2>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let teacher of teachers; index as i">
-      <th scope="row">{{i + 1}}</th>
-      <td><a *ngIf="teacher.photo">
-        <img [src]="'data:' + teacher.photoContentType + ';base64,' + teacher.photo" style="max-height: 30px;"
-             alt="teacher image"/>
-      </a></td>
-      <td>{{teacher.firstName}}</td>
-      <td>{{teacher.lastName}}</td>
-      <td>{{teacher.phone}}</td>
-      <td>{{teacher.email}}</td>
-    </tr>
-    </tbody>
-  </table>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">{{'teachers.photo' | translate}}</th>
+            <th scope="col">{{'teachers.firstName' | translate}}</th>
+            <th scope="col">{{'teachers.lastName' | translate}}</th>
+            <th scope="col">{{'teachers.phone' | translate}}</th>
+            <th scope="col">{{'teachers.email' | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let teacher of teachers; index as i" [ngSwitch]="language">
+            <th scope="row">{{i + 1}}</th>
+            <td><a *ngIf="teacher.photo">
+              <img [src]="'data:' + teacher.photoContentType + ';base64,' + teacher.photo" style="max-height: 30px;"
+                   alt="teacher image"/>
+            </a></td>
+            <td>
+              <div *ngSwitchCase="'en'">{{teacher.firstNameEng}} </div>
+              <div *ngSwitchCase="'ru'">{{teacher.firstNameRus}} </div>
+              <div *ngSwitchDefault>{{teacher.firstName}} </div>
+            </td>
+            <td>
+              <div *ngSwitchCase="'en'">{{teacher.lastNameEng}} </div>
+              <div *ngSwitchCase="'ru'">{{teacher.lastNameRus}} </div>
+              <div *ngSwitchDefault>{{teacher.lastName}} </div>
+            </td>
+            <td>{{teacher.phone}}</td>
+            <td>{{teacher.email}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
