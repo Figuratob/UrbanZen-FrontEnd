@@ -1,20 +1,28 @@
-<div mat-dialog-container >
 
-  <div mat-dialog-content *ngIf="showError">
-    <h1 mat-dialog-title>Error</h1>
-    <h6>{{error}}</h6>
+  <div class="modal-header" >
+    <h4 *ngIf="!showError">{{'bookings.waiting'| translate}}</h4>
   </div>
 
-  <div mat-dialog-content *ngIf="!showError">
-    <h1 mat-dialog-title>Booking is confirmed</h1>
-    <h3>{{lesson.startDate.format('dddd')}}, {{lesson.startDate.format('DD.MM.YYYY')}}</h3>
+  <div class="modal-body" *ngIf="showError"><h6>{{error | translate}}</h6>
+  </div>
+
+  <div class="modal-body" *ngIf="!showError" [ngSwitch]="language">
+    <h5>{{lesson.startDate.locale(language).format('dddd')|titlecase}},
+      {{lesson.startDate.format('DD.MM.YYYY')}}</h5>
     <h6>{{lesson.startDate.format('HH:mm')}}-{{lesson.endDate.format('HH:mm')}}</h6>
-    <h3>{{lesson.name}}</h3>
-    <h6>Teacher: {{lesson.teacher.firstName}} {{lesson.teacher.lastName}}</h6>
+    <h5>
+      <div *ngSwitchCase="'en'">{{lesson.nameEng}}</div>
+      <div *ngSwitchCase="'ru'">{{lesson.nameRus}}</div>
+      <div *ngSwitchDefault>{{lesson.name}}</div>
+    </h5>
+    <h6>{{'lesson.teacher' | translate}}:
+      <div *ngSwitchCase="'en'">{{lesson.teacher.firstNameEng}} {{lesson.teacher.lastNameEng}}</div>
+      <div *ngSwitchCase="'ru'">{{lesson.teacher.firstNameRus}} {{lesson.teacher.lastNameRus}}</div>
+      <div *ngSwitchDefault>{{lesson.teacher.firstName}} {{lesson.teacher.lastName}}</div>
+    </h6>
   </div>
 
-  <div mat-dialog-actions>
-    <button mat-button class = "btn-primary"(click)="gotoBookings()">OK</button>
+  <div class="modal-footer">
+    <button class="btn btn-primary" (click)="gotoBookings()">OK</button>
   </div>
 
-</div>
