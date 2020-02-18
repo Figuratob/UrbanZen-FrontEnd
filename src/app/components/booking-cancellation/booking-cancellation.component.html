@@ -1,16 +1,14 @@
-<div mat-dialog-container >
 
-  <div mat-dialog-content *ngIf="showError">
-    <h1 mat-dialog-title>Error</h1>
+  <div class="modal-header" *ngIf="showError">
+    <h5>{{'error.error' | translate}}:</h5>
     <h6>{{error}}</h6>
   </div>
 
-  <div mat-dialog-content *ngIf="!showError">
-    <h1 mat-dialog-title>Booking is cancelled</h1>
+  <div class="modal-body" *ngIf="!showError">
+    <h5>{{'bookings.cancel' | translate}}!</h5>
   </div>
 
-  <div mat-dialog-actions>
-    <button mat-button class="btn-primary" (click)="gotoBookings()">OK</button>
+  <div class="modal-footer">
+    <button class=" btn btn-primary" (click)="gotoBookings()">OK</button>
   </div>
 
-</div>
