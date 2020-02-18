@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
-import {AccountService} from '../account.service';
+import {FormBuilder, Validators} from '@angular/forms';
 import {PasswordService} from './password.service';
+import {AuthenticationService} from "../../../../services/authentication.service";
 
 @Component({
   selector: 'password',
@@ -19,11 +18,13 @@ export class PasswordComponent implements OnInit {
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
   });
 
-  constructor(private passwordService: PasswordService, private accountService: AccountService, private fb: FormBuilder) {
+  constructor(private passwordService: PasswordService,
+              private authenticationService: AuthenticationService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.accountService.identity().then(account => {
+    this.authenticationService.identity().then(account => {
       this.account = account;
     });
   }

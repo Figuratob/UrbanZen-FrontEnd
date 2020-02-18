@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, Validators} from "@angular/forms";
-import {AccountService} from "../account.service";
+import {AuthenticationService} from "../../../../services/authentication.service";
 
 @Component({
   selector: 'app-settings',
@@ -9,7 +9,6 @@ import {AccountService} from "../account.service";
 export class SettingsComponent implements OnInit {
   error: string;
   success: string;
-  languages: any[];
   settingsForm = this.fb.group({
     firstName: [undefined, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
     lastName: [undefined, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
@@ -22,36 +21,26 @@ export class SettingsComponent implements OnInit {
   });
 
   constructor(
-    private accountService: AccountService,
+    private authenticationService: AuthenticationService,
     private fb: FormBuilder,
-    // private languageService: JhiLanguageService,
-    // private languageHelper: JhiLanguageHelper
   ) {
   }
 
   ngOnInit() {
-    this.accountService.identity().then(account => {
+    this.authenticationService.identity().then(account => {
       this.updateForm(account);
     });
-    // this.languageHelper.getAll().then(languages => {
-    //   this.languages = languages;
-    // });
   }
 
   save() {
     const settingsAccount = this.accountFromForm();
-    this.accountService.save(settingsAccount).subscribe(
+    this.authenticationService.save(settingsAccount).subscribe(
       () => {
         this.error = null;
         this.success = 'OK';
-        this.accountService.identity(true).then(account => {
+        this.authenticationService.identity(true).then(account => {
           this.updateForm(account);
         });
-        // this.languageService.getCurrent().then(current => {
-        //   if (settingsAccount.langKey !== current) {
-        //     this.languageService.changeLanguage(settingsAccount.langKey);
-        //   }
-        // });
       },
       () => {
         this.success = null;

@@ -5,7 +5,6 @@ import {first} from 'rxjs/operators';
 
 import {AlertService} from '../../../../services/alert.service';
 import {AuthenticationService} from '../../../../services/authentication.service'
-import {AccountService} from "../account.service";
 
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
@@ -19,13 +18,12 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private accountService: AccountService,
-    private alertService: AlertService
-  ) {
+    private alertService: AlertService) {
+
     // redirect to home if already logged in
-    if (this.authenticationService.getToken()) {
-      this.accountService.identity(true);
-      this.router.navigate(['/']);
+
+    if (localStorage.getItem('token')) {
+        this.router.navigate(['/']);
     }
   }
 
@@ -65,9 +63,5 @@ export class LoginComponent implements OnInit {
           this.alertService.error('Email or password is incorrect');
           this.loading = false;
         });
-  }
-
-  requestResetPassword() {
-    this.router.navigate(['/reset', 'request']);
   }
 }
