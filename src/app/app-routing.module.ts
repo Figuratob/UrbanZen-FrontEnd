@@ -38,6 +38,10 @@ const routes: Routes = [
     component: PasswordComponent, canActivate: [AuthGuard]
   },
   {
+    path: 'reset',
+    component: PasswordResetInitComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
