@@ -1,40 +1,70 @@
-<h2>Register</h2>
+<h2>{{'register.title' | translate}}</h2>
 
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="email">Email </label>
+    <label for="email">{{'form.email.label' | translate}}</label>
     <input type="text" id="email" formControlName="email" class="form-control"
-           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+           placeholder="{{'form.email.placeholder' | translate}}"/>
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-      <div *ngIf="f.email.errors.required">Email is required</div>
+      <div *ngIf="f.email.errors.required">
+        {{'messages.validate.email.required'| translate}}
+      </div>
+      <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.invalid">
+             {{'messages.validate.email.invalid'| translate}}
+      </small>
+      <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.minlength">
+        {{'messages.validate.email.minlength'| translate}}
+      </small>
+      <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.maxlength">
+        {{'messages.validate.email.maxlength'| translate}}
+      </small>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="password">{{'form.password.label' | translate}}</label>
     <input type="password" id="password" formControlName="password" class="form-control"
-           [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+           [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+           placeholder="{{'form.password.placeholder' | translate}}"/>
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">Password is required</div>
-      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+      <div *ngIf="f.password.errors.required">
+        {{'messages.validate.password.required'| translate}}
+      </div>
+      <div *ngIf="f.password.errors.minlength">
+        {{'messages.validate.password.minlength'| translate}}
+      </div>
+      <div *ngIf="f.password.errors.maxlength">
+        {{'messages.validate.password.maxlength'| translate}}
+      </div>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="confirmPassword">Confirm Password</label>
+    <label for="confirmPassword">{{'form.confirmPassword.label' | translate}}</label>
     <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control"
-           [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"/>
+           [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+           placeholder="{{'form.confirmPassword.placeholder' | translate}}"/>
     <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-      <div *ngIf="f.confirmPassword.errors.required">Confirmation password is required</div>
-      <div *ngIf="f.confirmPassword.errors.minlength">Confirmation password must be at least 6 characters</div>
+      <div *ngIf="f.confirmPassword.errors.required">
+        {{'messages.validate.confirmPassword.required'| translate}}
+      </div>
+      <div *ngIf="f.confirmPassword.errors.minlength">
+        {{'messages.validate.confirmPassword.minlength'| translate}}
+      </div>
+      <div *ngIf="f.confirmPassword.errors.maxlength">
+        {{'messages.validate.confirmPassword.maxlength' | translate}}
+      </div>
+
     </div>
   </div>
 
   <div class="form-group">
     <button [disabled]="loading" class="btn btn-primary">
       <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-      Register
+      {{'action.register'| translate}}
     </button>
-    <a routerLink="/login" class="btn btn-link">Cancel</a>
+    <a routerLink="/login" class="btn btn-link">{{'action.login'| translate}}</a>
   </div>
+
 </form>
