@@ -1,22 +1,52 @@
+<div *ngIf="!timetables">
+ loading
+</div>
 
-<ul class="list-group" *ngFor="let timetable of timetables">
+<div *ngIf="timetables">
 
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <h6>{{timetable.timetableDay.format('dddd')}}, {{timetable.timetableDay.format('DD.MM.YYYY')}}</h6>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center"
-      *ngFor="let lessonEntry of timetable.lessonEntries">
+  <ul class="list-group" *ngFor="let timetable of timetables"  >
 
-    <button mat-raised-button class="btn-block" [disabled]="lessonEntry.lesson.startDate.isBefore(now)"
-            (click)="openDialog(lessonEntry, timetable, showBookingModalNotCancelModal)">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <h6>{{timetable.timetableDay.locale(language).format('dddd')| titlecase}}
+        , {{timetable.timetableDay.format('DD.MM.YYYY')}}</h6>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let lessonEntry of timetable.lessonEntries">
 
-      {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
-      {{lessonEntry.lesson.name}}, {{lessonEntry.lesson.teacher.firstName}}
-      <span *ngIf="showCaption" class="badge badge-primary badge-pill">{{lessonEntry.lesson.remainSpaces}}
-        /{{lessonEntry.lesson.availableSpaces}}</span>
+      <button *ngIf="language == 'en'" mat-raised-button class="text-wrap"
+              [disabled]="lessonEntry.lesson.startDate.isBefore(now)"
+              (click)="openDialog(lessonEntry, timetable, showBookingModalNotCancelModal)">
 
-    </button>
-  </li>
+        {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
+        {{lessonEntry.lesson.nameEng}}, {{lessonEntry.lesson.teacher.firstNameEng}}
+        <span *ngIf="showCaption" class="badge badge-primary badge-pill">{{lessonEntry.lesson.remainSpaces}}
+          /{{lessonEntry.lesson.availableSpaces}}</span>
 
-</ul>
+      </button>
 
+      <button *ngIf="language == 'ru'" mat-raised-button class="text-wrap"
+              [disabled]="lessonEntry.lesson.startDate.isBefore(now)"
+              (click)="openDialog(lessonEntry, timetable, showBookingModalNotCancelModal)">
+
+        {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
+        {{lessonEntry.lesson.nameRus}}, {{lessonEntry.lesson.teacher.firstNameRus}}
+        <span *ngIf="showCaption" class="badge badge-primary badge-pill">{{lessonEntry.lesson.remainSpaces}}
+          /{{lessonEntry.lesson.availableSpaces}}</span>
+
+      </button>
+
+      <button *ngIf="language == 'et'"  mat-raised-button class="text-wrap"
+              [disabled]="lessonEntry.lesson.startDate.isBefore(now)"
+              (click)="openDialog(lessonEntry, timetable, showBookingModalNotCancelModal)">
+
+        {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
+        {{lessonEntry.lesson.name}}, {{lessonEntry.lesson.teacher.firstName}}
+        <span *ngIf="showCaption" class="badge badge-primary badge-pill">{{lessonEntry.lesson.remainSpaces}}
+          /{{lessonEntry.lesson.availableSpaces}}</span>
+
+      </button>
+    </li>
+
+  </ul>
+
+</div>

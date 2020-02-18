@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material';
 import {BookingConfirmationComponent} from '../../../components/booking-confirmation/booking-confirmation.component';
 import {BookingCancellationComponent} from '../../../components/booking-cancellation/booking-cancellation.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -16,17 +17,18 @@ import {BookingCancellationComponent} from '../../../components/booking-cancella
     BookingConfirmationComponent,
     BookingCancellationComponent
   ],
-  imports: [
-    CommonModule,
-    TimetableRoutingModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatDialogModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
+    imports: [
+        CommonModule,
+        TimetableRoutingModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatDialogModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        TranslateModule,
 
-  ],
+    ],
   exports: [
     TimetableComponent
   ],
