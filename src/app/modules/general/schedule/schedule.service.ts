@@ -6,13 +6,14 @@ import {Lesson} from "../../../model/lesson.model";
 import * as moment from "moment";
 import {TimetableDTO} from "../../../model/timetableDTO.model";
 import { Moment } from 'moment';
+import {ConfigService} from "../../../services/config/config.service";
 
 type EntityArrayResponseType = HttpResponse<TimetableDTO[]>;
 
 @Injectable()
 export class ScheduleService {
 
-  constructor(protected http: HttpClient) {
+  constructor(protected http: HttpClient, protected configService: ConfigService) {
   }
 
   getData(firstDayOfWeek: Moment, lastDayOfWeek: Moment): Observable<EntityArrayResponseType> {
@@ -25,7 +26,7 @@ export class ScheduleService {
       lastDayOfWeek: lastDayOfWeekFormatted
     }
     return this.http
-      .get<TimetableDTO[]>('http://localhost:8080/api/getTimetableByDates', {params, observe: 'response'})
+      .get<TimetableDTO[]>(this.configService.config.url + 'api/getTimetableByDates', {params, observe: 'response'})
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

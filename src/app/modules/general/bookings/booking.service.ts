@@ -4,13 +4,14 @@ import {Observable} from "rxjs";
 import {Booking} from "../../../model/booking.model";
 import {map} from "rxjs/operators";
 import * as moment from 'moment';
+import {ConfigService} from "../../../services/config/config.service";
 
 type EntityResponseType = HttpResponse<Booking>;
 type EntityArrayResponseType = HttpResponse<Booking[]>;
 
 @Injectable()
 export class BookingService {
-  constructor(protected http: HttpClient) {
+  constructor(protected http: HttpClient, protected configService: ConfigService) {
   }
 
   createBook(lessonId: number): Observable<EntityResponseType> {
@@ -18,7 +19,7 @@ export class BookingService {
       lessonId: lessonId
     };
     return this.http
-      .post<Booking>('http://localhost:8080/api/bookings/new', lessonId, {observe: 'response'})
+      .post<Booking>(this.configService.config.url + 'api/bookings/new', lessonId, {observe: 'response'})
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
@@ -35,7 +36,7 @@ export class BookingService {
   query(req?: any): Observable<EntityArrayResponseType> {
     // const options = createRequestOption(req);
     return this.http
-      .get<Booking[]>('http://localhost:8080/api/userBookings', {observe: 'response'})
+      .get<Booking[]>(this.configService.config.url + 'api/userBookings', {observe: 'response'})
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
@@ -54,7 +55,7 @@ export class BookingService {
 
   cancel(bookingId: number): Observable<EntityResponseType> {
     return this.http
-      .put<Booking>('http://localhost:8080/api/bookings/' + bookingId + '/cancel', null, {observe: 'response'})
+      .put<Booking>(this.configService.config.url + 'api/bookings/' + bookingId + '/cancel', null, {observe: 'response'})
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 }
