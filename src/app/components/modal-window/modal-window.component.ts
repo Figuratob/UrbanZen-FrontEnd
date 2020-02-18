@@ -45,7 +45,6 @@ export class ModalWindowComponent implements AfterViewInit {
     this.lessonEntry = data.lessonEntry;
     this.day = data.day;
     this.language = translateService.currentLang;
-    console.log('lang from modalWindow: ' + this.language);
   }
 
   ngAfterViewInit(): void {

@@ -42,13 +42,11 @@ export class HeaderComponent {
   }
 
   isAuthenticated() {
-    console.log('header component is authenticated called ' + this.authenticationService.isAuthenticated());
     let authenticated = this.authenticationService.isAuthenticated();
     return authenticated;
   }
 
   changeLanguage(lang: string) {
-    console.log('lang from header: ' + lang);
     localStorage.setItem('lang', lang);
     this.translateService.use(lang);
   }

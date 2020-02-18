@@ -37,7 +37,6 @@ export class TimetableComponent implements AfterViewInit {
               protected translateService: TranslateService) {
 
     this.language = translateService.currentLang;
-    console.log('lang from timetable: ' + this.language);
     this.now = moment();
   }
 
