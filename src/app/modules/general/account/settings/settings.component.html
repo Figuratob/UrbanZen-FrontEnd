@@ -1,10 +1,11 @@
 <div>
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h2>My data</h2>
+      <h2>{{'settings.title' | translate}}
+      </h2>
 
       <div class="alert alert-success" *ngIf="success">
-        <strong>Your data is saved!</strong>
+        <strong>{{'settings.messages.success' | translate}}</strong>
       </div>
 
       <alert></alert>
@@ -13,96 +14,79 @@
             *ngIf="settingsForm.get('login').value" novalidate>
 
         <div class="form-group">
-          <label class="form-control-label" for="firstName">First Name</label>
+          <label class="form-control-label" for="firstName">{{'form.firstName.label' | translate}}</label>
           <input type="text" class="form-control" id="firstName" name="firstName"
-                 placeholder="{{'settings.form.firstname.placeholder'}}"
-                 formControlName="firstName">
-          <div
-            *ngIf="settingsForm.get('firstName').invalid && (settingsForm.get('firstName').dirty || settingsForm.get('firstName').touched)">
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('firstName').errors.required">
-              Your first name is required.
+                 placeholder="{{'form.firstName.placeholder'| translate}}" formControlName="firstName">
+          <div *ngIf="settingsForm.get('firstName').invalid && (settingsForm.get('firstName').dirty ||
+          settingsForm.get('firstName').touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('firstName').errors.required">
+              {{'settings.messages.validate.firstName.required' | translate}}
             </small>
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('firstName').errors.minlength">
-              Your first name is required to be at least 1 character.
+            <small class="form-text text-danger" *ngIf="settingsForm.get('firstName').errors.minlength">
+              {{'settings.validate.firstName.minlength' | translate}}
             </small>
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('firstName').errors.maxlength">
-              Your first name cannot be longer than 50 characters.
+            <small class="form-text text-danger" *ngIf="settingsForm.get('firstName').errors.maxlength">
+              {{'settings.validate.firstName.maxlength' | translate}}
             </small>
           </div>
         </div>
         <div class="form-group">
-          <label class="form-control-label" for="lastName">Last Name</label>
+          <label class="form-control-label" for="lastName">{{'form.lastName.label' | translate}}
+          </label>
           <input type="text" class="form-control" id="lastName" name="lastName"
-                 placeholder="{{'settings.form.lastname.placeholder'}}"
-                 formControlName="lastName">
-          <div
-            *ngIf="settingsForm.get('lastName').invalid && (settingsForm.get('lastName').dirty || settingsForm.get('lastName').touched)">
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('lastName').errors.required">
-              Your last name is required.
+                 placeholder="{{'form.lastName.placeholder' | translate}}" formControlName="lastName">
+          <div *ngIf="settingsForm.get('lastName').invalid && (settingsForm.get('lastName').dirty ||
+          settingsForm.get('lastName').touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('lastName').errors.required">
+              {{'settings.messages.validate.lastName.required' | translate}}
             </small>
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('lastName').errors.minlength">
-              Your last name is required to be at least 1 character.
+            <small class="form-text text-danger" *ngIf="settingsForm.get('lastName').errors.minlength">
+              {{'settings.messages.validate.lastName.required' | translate}}
             </small>
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('lastName').errors.maxlength">
-              Your last name cannot be longer than 50 characters.
+            <small class="form-text text-danger" *ngIf="settingsForm.get('lastName').errors.maxlength">
+              {{'settings.messages.validate.lastName.required' | translate}}
             </small>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" for="email">Email</label>
+          <label class="form-control-label" for="email">{{'form.email.label' | translate}}
+          </label>
           <input type="email" class="form-control" id="email" name="email"
-                 placeholder="{{'global.form.email.placeholder'}}"
-                 formControlName="email">
-          <div
-            *ngIf="settingsForm.get('email').invalid && (settingsForm.get('email').dirty || settingsForm.get('email').touched)">
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('email').errors.required">
-              Your email is required.
+                 placeholder="{{'form.email.placeholder' | translate}}" formControlName="email">
+          <div *ngIf="settingsForm.get('email').invalid && (settingsForm.get('email').dirty ||
+          settingsForm.get('email').touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email').errors.required">
+              {{'messages.validate.email.required' | translate}}
             </small>
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('email').errors.email">
-              Your email is invalid.
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email').errors.email">
+              {{'messages.validate.email.invalid' | translate}}
             </small>
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('email').errors.minlength">
-              Your email is required to be at least 5 characters.
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email').errors.minlength">
+              {{'messages.validate.email.minLength' | translate}}
             </small>
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('email').errors.maxlength">
-              Your email cannot be longer than 100 characters.
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email').errors.maxlength">
+              {{'messages.validate.email.maxLength' | translate}}
             </small>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" for="phone">Phone</label>
+          <label class="form-control-label" for="phone">{{'form.phone.label' | translate}}
+          </label>
           <input type="text" class="form-control" name="phone" id="phone"
-                 placeholder="{{'global.form.phone.placeholder'}}"
-                 formControlName="phone"/>
-          <div
-            *ngIf="settingsForm.get('phone').invalid && (settingsForm.get('phone').dirty || settingsForm.get('phone').touched)">
-            <small class="form-text text-danger"
-                   *ngIf="settingsForm.get('phone').errors.required">
-              This field is required.
+                 placeholder="{{'form.phone.placeholder' | translate}}" formControlName="phone"/>
+          <div *ngIf="settingsForm.get('phone').invalid && (settingsForm.get('phone').dirty ||
+            settingsForm.get('phone').touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('phone').errors.required">
+              {{'messages.validate.phone.required' | translate}}
             </small>
           </div>
         </div>
 
-        <!--              <div class="form-group" *ngIf="languages && languages.length > 0">-->
-        <!--                <label for="langKey">Language</label>-->
-        <!--                <select class="form-control" id="langKey" name="langKey" formControlName="langKey">-->
-        <!--                  <option *ngFor="let language of languages" [value]="language">{{language    }}</option>-->
-        <!--                </select>-->
-        <!--              </div>-->
-
-        <button type="submit" [disabled]="settingsForm.invalid" class="btn btn-primary">Save</button>
+        <button type="submit" [disabled]="settingsForm.invalid" class="btn btn-primary">
+          {{'action.save' | translate}}
+        </button>
       </form>
     </div>
   </div>
