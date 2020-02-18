@@ -1,0 +1,236 @@
+{
+  "global": {
+    "title": "UrbanZen",
+    "et": "Eesti",
+    "en": "English",
+    "ru": "Русский"
+  },
+  "header": {},
+  "schedule": {
+    "title": "Schedule",
+    "currentWeek": "Current Week: "
+  },
+  "teachers": {
+    "title": "Teachers",
+    "teacher": "Teacher",
+    "notFound": "No Teachers found",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "photo": "Photo",
+    "about": "About",
+    "lesson": "Lesson",
+    "lessonTemplate": "Lesson Template"
+  },
+  "bookings": {
+    "title": "My Bookings",
+    "confirm": "Booking is confirmed",
+    "cancel": "Booking is cancelled",
+    "waiting": "We are waiting for you"
+  },
+  "studio": "Studio",
+  "language": "Language",
+  "account": {
+    "title": "My Account"
+  },
+  "settings": {
+    "title": "My data",
+    "messages": {
+      "error": {
+        "fail": "An error has occurred! Settings could not be saved.",
+        "emailExists": "Email is already in use! Please choose another one."
+      },
+      "success": "Your data is saved!",
+      "validate": {
+        "firstName": {
+          "required": "Your first name is required.",
+          "minlength": "Your first name is required to be at least 1 character",
+          "maxlength": "Your first name cannot be longer than 50 characters"
+        },
+        "lastName": {
+          "required": "Your last name is required.",
+          "minlength": "Your last name is required to be at least 1 character",
+          "maxlength": "Your last name cannot be longer than 50 characters"
+        }
+      }
+    }
+  },
+  "activate": {
+    "title": "Activation",
+    "messages": {
+      "success": "Your user account has been activated. Please ",
+      "error": "Your user could not be activated. Please use the registration form to sign up."
+    }
+  },
+  "password": {
+    "title": "Password",
+    "messages": {
+      "error": "An error has occurred! The password could not be changed.",
+      "success": "Password changed!"
+    },
+    "reset": {
+      "request": {
+        "title": "Reset your password",
+        "form": {
+          "button": "Reset password"
+        },
+        "messages": {
+          "info": "Enter the email address you used to register",
+          "success": "Check your emails for details on how to reset your password",
+          "notfound": "Email address isn't registered! Please check and try again"
+        }
+      },
+      "finish": {
+        "title": "Reset password",
+        "form": {
+          "button": "Validate new password"
+        },
+        "messages": {
+          "info": "Choose a new password",
+          "success": "Your password has been reset. Please ",
+          "keyMissing": "The reset key is missing.",
+          "error": "Your password couldn't be reset. Remember a password request is only valid for 24 hours."
+        }
+      }
+    }
+  },
+  "sessions": "Sessions",
+  "login": {
+    "title": "Sign in",
+    "form": {
+      "password": "Password",
+      "password.placeholder": "Your password",
+      "rememberMe": "Remember me",
+      "button": "Sign in"
+    },
+    "messages": {
+      "error": {
+        "authentication": "Failed to sign in! Please check your credentials and try again."
+      }
+    },
+    "password": {
+      "forgot": "Did you forget your password?"
+    }
+  },
+  "register": {
+    "title": "Registration",
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "Your username is required.",
+          "minLength": "Your username is required to be at least 1 character.",
+          "maxLength": "Your username cannot be longer than 50 characters.",
+          "pattern": "Your username can only contain letters and digits."
+        }
+      },
+      "success": "Registration saved! Please check your email for confirmation.",
+      "error": {
+        "fail": "Registration failed! Please try again later.",
+        "userExists": "Login name already registered! Please choose another one.",
+        "emailExists": "Email is already in use! Please choose another one."
+      }
+    }
+  },
+  "lesson": {
+    "name": "Name",
+    "description": "Description",
+    "availableSpaces": "Max Available Spaces",
+    "remainAvailableSpaces": "Remain Available Spaces",
+    "teacher": "Teacher"
+  },
+  "form": {
+    "firstName.label": "First Name",
+    "firstName.placeholder": "Your first name",
+    "lastName.label": "Last Name",
+    "lastName.placeholder": "Your last name",
+    "language": "Language",
+    "username.label": "Username",
+    "username.placeholder": "Your username",
+    "password.label": "Password",
+    "password.placeholder": "Your password",
+    "currentPassword.label": "Current password",
+    "currentPassword.placeholder": "Current password",
+    "newPassword.label": "New password",
+    "newPassword.placeholder": "New password",
+    "confirmPassword.label": "Password confirmation",
+    "confirmPassword.placeholder": "Confirm your password",
+    "email.label": "Email",
+    "email.placeholder": "Your email",
+    "phone.label": "Phone",
+    "phone.placeholder": "Your phone number"
+  },
+  "messages": {
+    "info": {
+      "authenticated": {
+        "prefix": "If you want to ",
+        "link": "sign in"
+      },
+      "register": {
+        "noAccount": "You don't have an account yet?",
+        "link": "Register a new account"
+      }
+    },
+    "error": {
+      "passwordDontMatch": "The password and its confirmation do not match!"
+    },
+    "validate": {
+      "password": {
+        "required": "Your password is required.",
+        "minlength": "Your password is required to be at least 6 characters.",
+        "maxlength": "Your password cannot be longer than 50 characters.",
+        "strength": "Password strength:"
+      },
+      "confirmPassword": {
+        "required": "Your confirmation password is required.",
+        "minlength": "Your confirmation password is required to be at least 6 characters.",
+        "maxlength": "Your confirmation password cannot be longer than 50 characters."
+      },
+      "email": {
+        "required": "Your email is required.",
+        "invalid": "Your email is invalid.",
+        "minlength": "Your email is required to be at least 5 characters.",
+        "maxlength": "Your email cannot be longer than 50 characters."
+      },
+      "phone": {
+        "required": "Your phone number is required.",
+        "invalid": "Your phone number is invalid.",
+        "minlength": "Your phone number is required to be at least 7 characters.",
+        "maxlength": "Your phone number cannot be longer than 50 characters."
+      }
+    }
+  },
+  "action": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "open": "Open",
+    "save": "Save",
+    "view": "View",
+    "book": "Book",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "register": "Register"
+  },
+  "error": {
+    "error": "Error occurred",
+    "internalServerError": "Internal server error",
+    "server.not.reachable": "Server not reachable",
+    "url.not.found": "Not found",
+    "NotNull": "Field {{ fieldName }} cannot be empty!",
+    "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
+    "userexists": "Login name already used!",
+    "emailexists": "Email is already in use!",
+    "idexists": "A new {{ entityName }} cannot already have an ID",
+    "idnull": "Invalid ID",
+    "userempty": "User is empty",
+    "usernotfound": "User not found",
+    "lessonnotfound": "Lesson not found",
+    "bookingnotfound": "Booking not found",
+    "notauthorized": "You are not authorized to make changes to this booking",
+    "bookingforthesamelesson": "Booking for this lesson is already exists",
+    "nomoreavailablespaces": "There are no more available spaces for this lesson"
+  }
+}
+

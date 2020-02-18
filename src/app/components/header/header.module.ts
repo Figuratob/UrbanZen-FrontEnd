@@ -4,18 +4,20 @@ import {HeaderRoutingModule} from './header-routing.module';
 import {HeaderComponent} from './header.component';
 import {NgbCollapseModule, NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+
   ],
     imports: [
         CommonModule,
         HeaderRoutingModule,
         NgbDropdownModule,
         NgbCollapseModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        TranslateModule,
     ],
   exports: [
     HeaderComponent

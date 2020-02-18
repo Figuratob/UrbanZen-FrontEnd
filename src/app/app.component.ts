@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Urban Zen Studio';
+
+  constructor(public translateService: TranslateService) {
+
+    translateService.addLangs(['et', 'en', 'ru']);
+    translateService.setDefaultLang('et');
+
+    // translateService.use(translateService.currentLang == undefined ? 'et' : translateService.currentLang);
+    // translateService.use(localStorage.getItem('lang') == null ? 'et' : localStorage.getItem('lang'));
+    translateService.use((translateService.currentLang == undefined) || (localStorage.getItem('lang') == null) ?
+    (translateService.defaultLang) : (translateService.currentLang || localStorage.getItem('lang')));
+  }
 }

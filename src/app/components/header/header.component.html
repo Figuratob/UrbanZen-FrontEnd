@@ -2,85 +2,106 @@
   <nav class="navbar navbar-dark navbar-expand-md fixed-top" style="background-color: #212121;">
     <a class="navbar-brand font-weight-bold" routerLink="/">
       <img class="mr-2" src="../../../assets/params/images/logo/kundalini.png" width="20" height="20" alt="">
-      <span style="color:white">{{ title }}</span>
+      <span style="color:white">{{ title | translate}}</span>
     </a>
 
     <button class="navbar-toggler d-lg-none" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
-       aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
 
-    <div  [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" [ngSwitch]="isAuthenticated()">
+    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" [ngSwitch]="isAuthenticated()">
 
       <ul class="navbar-nav ml-auto font-weight-bold">
 
         <li class="nav-item active">
           <a class="nav-link" routerLink="/" (click)="isNavbarCollapsed = true">
-            <i class="fas fa-home mr-2" ></i>Schedule
+            <i class="fas fa-home mr-2"></i>{{'schedule.title' | translate}}
           </a>
         </li>
 
         <li class="nav-item active" (click)="isNavbarCollapsed = true">
-          <a class="nav-link" routerLink="/teachers" >
-            <i class="fas fa-th-list mr-2" ></i>Teachers
+          <a class="nav-link" routerLink="/teachers">
+            <i class="fas fa-th-list mr-2"></i>{{'teachers.title' | translate}}
           </a>
         </li>
 
         <li *ngSwitchCase="true" class="nav-item active" (click)="isNavbarCollapsed = true">
-          <a class="nav-link" routerLink="/bookings" >
-            <i class="fab fa-github mr-2"></i>My bookings
+          <a class="nav-link" routerLink="/bookings">
+            <i class="fab fa-github mr-2"></i>{{'bookings.title'|translate}}
           </a>
         </li>
 
         <li class="nav-item active" (click)="isNavbarCollapsed = true">
           <a class="nav-link" href="https://urbanzen.ee">
-            <i class="far fa-question-circle mr-2"></i>Studio
+            <i class="far fa-question-circle mr-2"></i>{{'studio'|translate}}
           </a>
         </li>
 
-        <li ngbDropdown class="nav-item pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
-
-          <a class="nav-link dropdown" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
-                    <i class="fas fa-user" ></i>
+        <li ngbDropdown class="nav-item dropdown pointer" display="dynamic">
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesNavBarDropdown">
                     <span>
-                      My account
+                      <i class="fas fa-flag mr-2"></i><span>{{'language'|translate}}</span>
                     </span>
           </a>
 
-          <ul ngbDropdownMenu aria-labelledby="account-menu">
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesNavBarDropdown">
 
+            <li *ngFor="let lang of languages">
+              <a ngbDropdownItem class="ml-1" href="javascript:void(0);"
+                 (click)="changeLanguage(lang); isNavbarCollapsed = true">{{'global.' + lang | translate}}
+              </a>
+            </li>
+
+          </ul>
+
+        <li ngbDropdown class="nav-item pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link dropdown" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
+            <i class="fas fa-user"></i>
+            <span class="ml-1">{{'account.title'|translate}}</span>
+          </a>
+
+          <ul ngbDropdownMenu aria-labelledby="account-menu">
             <li *ngSwitchCase="true" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/settings" routerLinkActive="active">
                 <i class="fas fa-wrench" fixedWidth="true"></i>
-                <span class="ml-1">My data</span>
+                <span class="ml-1">{{'settings.title'|translate}}</span>
               </a>
             </li>
 
             <li *ngSwitchCase="true" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/password" routerLinkActive="active">
                 <i class="fas fa-lock" fixedWidth="true"></i>
-                <span class="ml-1">Password</span>
+                <span class="ml-1">{{'password.title'|translate}}</span>
               </a>
             </li>
 
             <li *ngSwitchCase="true">
               <a ngbDropdownItem (click)="logout()" id="logout">
                 <i class="fas fa-sign-out-alt" fixedWidth="true"></i>
-                <span class="ml-1">Sign out</span>
+                <span class="ml-1">{{'action.logout' | translate}}</span>
               </a>
             </li>
 
-            <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
-              <a ngbDropdownItem routerLink="/login" routerLinkActive="active">
-                <i class="fas fa-sign-in-alt" fixedWidth="true"></i>
-                <span class="ml-1">Sign in</span>
-              </a>
-            </li>
+<!--            <li *ngSwitchCase="false">-->
+<!--              <a ngbDropdownItem (click)="login()" id="login">-->
+<!--                <i class="fas fa-sign-in-alt" fixedWidth="true"></i>-->
+<!--                <span class="ml-1">{{'action.login' | translate}}</span>-->
+<!--              </a>-->
+<!--            </li>-->
+
+                        <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
+                          <a ngbDropdownItem routerLink="/login" routerLinkActive="active">
+                            <i class="fas fa-sign-in-alt" fixedWidth="true"></i>
+                            <span class="ml-1">{{'action.login' | translate}}
+                            </span>
+                          </a>
+                        </li>
 
             <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/register" routerLinkActive="active">
                 <i class="fas fa-user-plus" fixedWidth="true"></i>
-                <span class="ml-1">Register</span>
+                <span class="ml-1">{{'action.register' | translate}}</span>
               </a>
             </li>
 

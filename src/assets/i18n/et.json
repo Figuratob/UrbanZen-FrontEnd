@@ -1,0 +1,238 @@
+{
+  "global": {
+    "title": "UrbanZen",
+    "et": "Eesti",
+    "en": "English",
+    "ru": "Русский"
+  },
+  "header": {},
+  "schedule": {
+    "title": "Tunniplaan",
+    "currentWeek": "Jooksev nädal: "
+  },
+  "teachers": {
+    "title": "Õpetajad",
+    "teacher": "Õpetaja",
+    "notFound": "No Teachers found",
+    "firstName": "Eesnimi",
+    "lastName": "Perekonnanimi",
+    "email": "E-post",
+    "phone": "Telefon",
+    "photo": "Pilt",
+    "about": "Õpetaja kirjeldus",
+    "lesson": "Tund",
+    "lessonTemplate": "Tunni mall"
+  },
+  "bookings": {
+    "title": "Minu broneeringud",
+    "confirm": "Broneering on kinnitatud",
+    "cancel": "Broneering on kustutatud",
+    "waiting": "Ootame Sind"
+  },
+  "studio": "Stuudio",
+  "language": "Keel",
+  "account": {
+    "title": "Minu Konto"
+  },
+  "settings": {
+    "title": "Minu andmed",
+    "messages": {
+      "error": {
+        "fail": "Tekkis viga! Sätteid ei saanud salvestada.",
+        "emailExists": "E-posti aadress on juba kasutuses! Palun valige teine."
+      },
+      "success": "Teie andmed salvestatud!",
+      "validate": {
+        "firstName": {
+          "required": "Eesnimi on kohustuslik.",
+          "minlength": "Eesnime pikkus peab olema vähemalt 1 sümbol",
+          "maxlength": "Eesnime pikkus ei tohi olla üle 50 sümboli"
+        },
+        "lastName": {
+          "required": "Perekonnanimi on kohustuslik.",
+          "minlength": "Perekonnanime pikkus peab olema vähemalt 1 sümbol",
+          "maxlength": "Perekonnanime pikkus ei tohi olla üle 50 sümboli"
+        }
+      }
+    }
+  },
+  "activate": {
+    "title": "Aktiveerimine",
+    "messages": {
+      "success": "Teie konto on aktiveeritud. Palun ",
+      "error": "Teie kontot ei saanud aktiveerida. Palun kasutage registreerumiseks registreerimisvormi."
+    }
+  },
+  "password": {
+    "title": "Salasõna",
+    "messages": {
+      "error": "Tekkis viga! Salasõna muutmine ebaõnnestus.",
+      "success": "Salasõna muudetud!"
+    },
+    "reset": {
+      "request": {
+        "title": "Muuda oma salasõna",
+        "form": {
+          "button": "Muuda salasõna"
+        },
+        "messages": {
+          "info": "Sisestage registreerimisel kasutatud e-posti aadress",
+          "success": "Kontrollige oma e-posti, et saada infot, kuidas salasõna ära muuta.",
+          "notfound": "E-posti aadress pole registreeritud! Palun kontrollige üle ja proovige uuesti"
+        }
+      },
+      "finish": {
+        "title": "Muuda salasõna",
+        "form": {
+          "button": "Kinnita uus salasõna"
+        },
+        "messages": {
+          "info": "Valige uus salasõna",
+          "success": "Teie salasõna on muudetud. Palun ",
+          "keyMissing": "Muutmise võti puudub.",
+          "error": "Teie salasõna ei saanud ära muuta. Pidage meeles, et salasõna muutmise tellimus kehtib ainult 24 tundi."
+        }
+      }
+    }
+  },
+  "sessions": "Sessioonid",
+  "login": {
+    "title": "Logi sisse",
+    "form": {
+      "password": "Salasõna",
+      "password.placeholder": "Teie salasõna",
+      "rememberMe": "Jäta mind meelde",
+      "button": "Logi sisse"
+    },
+    "messages": {
+      "error": {
+        "authentication": "Sisselogimine ebaõnnestus! Palun kontrollige kasutajanime ja parooli ning proovige uuesti."
+      }
+    },
+    "password": {
+      "forgot": "Kas unustasite salasõna?"
+    }
+  },
+  "register": {
+    "title": "Registreerimine",
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "Kasutajanimi on kohustuslik.",
+          "minlength": "Kasutajanime pikkus peab olema vähemalt 1 sümbol.",
+          "maxlength": "Kasutajanimi ei tohi olla pikem kui 50 sümbolit.",
+          "pattern": "Kasutajanimi tohib sisaldada ainult väiketähti ja numbreid."
+        }
+      },
+      "success": "Registreering on salvestatud! Kinnituseks kontrollige oma e-posti.",
+      "error": {
+        "fail": "Registreerimine ebaõnnestus!> Palun proovige hiljem uuesti.",
+        "userExists": "Kasutajanimi on juba kasutuses! Palun valige teine kasutajanimi.",
+        "emailExists": "E-posti aadress on juba kasutuses! Palun valige teine e-posti aadress."
+      }
+    }
+  },
+  "lesson": {
+    "name": "Name",
+    "description": "Kirjeldus",
+    "availableSpaces": "Kohti kokku",
+    "remainAvailableSpaces": "Vabu kohti",
+    "teacher": "Õpetaja"
+  },
+  "form": {
+    "firstName.label": "Eesnimi",
+    "firstName.placeholder": "Teie eesnimi",
+    "lastName.label": "Perekonnanimi",
+    "lastName.placeholder": "Teie perekonnanimi",
+    "language": "Keel",
+    "username.label": "Kasutajanimi",
+    "username.placeholder": "Teie kasutajanimi",
+    "password.label": "Salasõna",
+    "password.placeholder": "Teie salasõna",
+    "currentPassword.label": "Jooksev salasasõna",
+    "currentPassword.placeholder": "Jooksev salasasõna",
+    "newPassword.label": "Uus salasõna",
+    "newPassword.placeholder": "Uus salasõna",
+    "confirmPassword.label": "Salasõna uuesti",
+    "confirmPassword.placeholder": "Salasõna uuesti",
+    "email.label": "E-post",
+    "email.placeholder": "Teie e-posti aadress",
+    "phone.label": "Telefon",
+    "phone.placeholder": "Teie telefoni number",
+    "button": "Salvesta"
+  },
+  "messages": {
+    "info": {
+      "authenticated": {
+        "prefix": "Kui te soovite ",
+        "link": "sisse logida",
+        "suffix": ", siis võite kasutada vaikekontosid:<br/>- Administraator (kasutajanimi=\"admin\" ja salasõna=\"admin\") <br/>- Kasutaja (kasutajanimi=\"user\" ja salasõna=\"user\")."
+      },
+      "register": {
+        "noAccount": "Teil pole veel kontot?",
+        "link": "Registreerige uus konto"
+      }
+    },
+    "error": {
+      "passwordDontMatch": "Salasõna ja selle kordus erinevad!"
+    },
+    "validate": {
+      "password": {
+        "required": "Salasõna on kohustuslik.",
+        "minlength": "Salasõna pikkus peab olema vähemalt 6 sümbolit.",
+        "maxlength": "Salasõna ei tohi olla pikem kui 50 sümbolit.",
+        "strength": "Salasõna tugevus:"
+      },
+      "confirmPassword": {
+        "required": "Salasõna kordus on kohustuslik.",
+        "minlength": "Salasõna kordus peab olema vähemalt 6 sümbolit.",
+        "maxlength": "Salasõna kordus ei tohi olla pikem kui 50 sümbolit."
+      },
+      "email": {
+        "required": "E-posti aadress on kohustuslik.",
+        "invalid": "Ebakorrektne e-posti aadress.",
+        "minlength": "E-posti aadressi pikkus peab olema vähemalt 5 sümbolit.",
+        "maxlength": "E-posti aadressi pikkus ei tohi olla üle 50 sümboli."
+      },
+      "phone": {
+        "required": "Teie telefoni number on kohustuslik.",
+        "invalid": "Teie telefoni number on vale.",
+        "minlength": "Your phone is required to be at least 5 characters.",
+        "maxlength": "Your phone cannot be longer than 50 characters."
+      }
+    }
+  },
+  "action": {
+    "back": "Tagasi",
+    "cancel": "Katkesta",
+    "delete": "Kustuta",
+    "edit": "Muuda",
+    "open": "Ava",
+    "save": "Salvesta",
+    "view": "Vaata",
+    "book": "Broneeri",
+    "login": "Logi sisse",
+    "logout": "Logi välja",
+    "register": "Registreeru"
+  },
+  "error": {
+    "error": "Tekkis viga",
+    "internalServerError": "Serveri sisemine viga",
+    "server.not.reachable": "Server pole kättesaadav",
+    "url.not.found": "Ei leitud",
+    "NotNull": "Väli {{ fieldName }} ei tohi olla tühi!",
+    "Size": "Välja {{ fieldName }} väärtus ei vasta min/max väärtuse nõuetele!",
+    "userexists": "Kasutajanimi on juba kasutuses!",
+    "emailexists": "E-posti aadress on juba kasutuses!",
+    "idexists": "Uue {{ entityName }} ID välja väärtus peab olema tühi",
+    "idnull": "Vale ID",
+    "userempty": "Sellist kasutajat ei ole",
+    "usernotfound": "Selline kasutaja ei ole leitud",
+    "lessonnotfound": "Tund ei ole leitud",
+    "bookingnotfound": "Broneering ei ole leitud",
+    "notauthorized": "Teie ei ole autoriseeritud, et teha muudatusi selles broneeringus",
+    "bookingforthesamelesson": "Broneering sellele tunnile on juba tehtud",
+    "nomoreavailablespaces": "Sellele tunnile ei ole enam vabu kohti"
+  }
+}
+
