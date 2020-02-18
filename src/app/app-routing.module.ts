@@ -7,6 +7,8 @@ import {SettingsComponent} from "./modules/general/account/settings/settings.com
 import {LoginComponent} from "./modules/general/account/login/login.component";
 import {PasswordComponent} from "./modules/general/account/password/password.component";
 import {AuthGuard} from "./components/auth.guard";
+import {PasswordResetInitComponent} from "./modules/general/account/password-reset/init/password-reset-init.component";
+import {ActivateComponent} from "./modules/general/account/activate/activate.component";
 
 const routes: Routes = [
 
@@ -20,12 +22,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/bookings/bookings.module').then(mod => mod.BookingsModule), canActivate :[AuthGuard]
   },
   {
-    path: 'account',
-    loadChildren: () => import('./modules/general/account/account.module').then(mod => mod.AccountModule)
+    path: 'register',
+    component: RegisterComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: 'activate',
+    component: ActivateComponent
   },
   {
     path: 'settings',

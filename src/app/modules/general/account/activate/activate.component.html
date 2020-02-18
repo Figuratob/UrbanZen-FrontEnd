@@ -1,0 +1,17 @@
+<div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>{{'activate.title' | translate}}</h1>
+
+      <div class="alert alert-success" *ngIf="success">
+        <span><strong>{{'activate.messages.success' | translate}}</strong></span>
+        <a class="alert-link" routerLink="/login" routerLinkActive="active">{{'action.login' | translate}}.</a>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="error">
+        <strong>{{'activate.messages.error' | translate}}</strong>
+      </div>
+
+    </div>
+  </div>
+</div>
