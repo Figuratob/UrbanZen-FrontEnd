@@ -2,6 +2,14 @@
   padding-left: 1rem;
 }
 
+/*
+.wrapper {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: darkcyan;
+}
+*/
 @media (max-width: 1440px) {
   .app main, .app footer {
     padding-left: 0;
