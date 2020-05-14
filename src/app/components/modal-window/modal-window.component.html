@@ -1,33 +1,32 @@
 <div class="modal-dialog-centered-fade" [ngSwitch]="language">
   <div class="modal-header">
     <div class="row">
-      <div class="col-3 pl-2">
+      <div class="col-3 pl-1">
         <img *ngIf="lessonEntry.lesson.teacher.photo" [src]="'data:' + lessonEntry.lesson.teacher.photoContentType
-      + ';base64,' + lessonEntry.lesson.teacher.photo" class="img-fluid" style="max-height: 30px;" alt="teacher image"/>
-        <h6>
+      + ';base64,' + lessonEntry.lesson.teacher.photo" class="img-fluid" style="max-height: 100px;" alt="teacher image"/>
+      </div>
+      <div class="col-9">
+        <h5 class="font-weight-bold">
+          <div *ngSwitchCase="'en'">{{lessonEntry.lesson.nameEng}}</div>
+          <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.nameRus}}</div>
+          <div *ngSwitchDefault>{{lessonEntry.lesson.name}}</div>
+        </h5>
+        <h6>{{lessonEntry.lesson.startDate.locale(language).format('dddd') | titlecase}},
+          {{lessonEntry.lesson.startDate.format('DD.MM.YYYY')}}</h6>
+        <h6>{{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}</h6>
+        <h6>{{'teachers.teacher' | translate}}:
           <div *ngSwitchCase="'en'">{{lessonEntry.lesson.teacher.firstNameEng}}</div>
           <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.teacher.firstNameRus}}</div>
           <div *ngSwitchDefault>{{lessonEntry.lesson.teacher.firstName}}</div>
         </h6>
-      </div>
-
-      <div class="col-9">
-        <h6>
-          <div *ngSwitchCase="'en'">{{lessonEntry.lesson.nameEng}}</div>
-          <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.nameRus}}</div>
-          <div *ngSwitchDefault>{{lessonEntry.lesson.name}}</div>
-        </h6>
-        <h6>{{lessonEntry.lesson.startDate.locale(language).format('dddd') | titlecase}}
-          {{lessonEntry.lesson.startDate.format('DD.MM.YYYY')}}</h6>
-        <h6>{{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}</h6>
         <span class="badge badge-primary badge-pill">
         {{'lesson.remainAvailableSpaces' | translate}}: {{lessonEntry.lesson.remainSpaces}}</span>
       </div>
     </div>
   </div>
 
-  <div class="modal-body">
-    <p class="mx-3">
+  <div class="modal-body mx-3">
+    <!--<p class="mx-3">-->
     <div *ngSwitchCase="'en'">{{lessonEntry.lesson.descriptionEng}}</div>
     <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.descriptionRus}}</div>
     <div *ngSwitchDefault>{{lessonEntry.lesson.description}}</div>
