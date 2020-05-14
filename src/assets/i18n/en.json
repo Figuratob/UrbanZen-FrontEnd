@@ -136,7 +136,7 @@
     "name": "Name",
     "description": "Description",
     "availableSpaces": "Max Available Spaces",
-    "remainAvailableSpaces": "Remain Available Spaces",
+    "remainAvailableSpaces": "Remain available spaces",
     "teacher": "Teacher"
   },
   "form": {
