@@ -7,8 +7,6 @@
   <ul class="list-group" *ngFor="let timetable of timetables">
     <div class="card p-2">
       <div class="row">
-
-
         <div class="col-sm">
 
           <li class="list-group-item d-flex justify-content-between align-items-end">
@@ -22,21 +20,20 @@
           <li class="list-group-item d-flex justify-content-between align-items-end"
               *ngFor="let lessonEntry of timetable.lessonEntries">
 
-          <span *ngIf="language == 'en'" class="mr-2">
-            {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
-            {{lessonEntry.lesson.nameEng}}, {{lessonEntry.lesson.teacher.firstNameEng}}
-          </span>
+            <p *ngIf="language == 'en'" class="mr-2">{{lessonEntry.lesson.startDate.format('HH:mm')}}-
+              {{lessonEntry.lesson.endDate.format('HH:mm')}}</p>
+            <p *ngIf="language == 'en'" class="mr-2">{{lessonEntry.lesson.nameEng}}, </p>
+            <p *ngIf="language == 'en'" class="mr-2">{{lessonEntry.lesson.teacher.firstNameEng}}</p>
 
-            <span *ngIf="language == 'ru'" class="mr-2">
-            {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
-              {{lessonEntry.lesson.nameRus}}, {{lessonEntry.lesson.teacher.firstNameRus}}
-          </span>
+            <p *ngIf="language == 'ru'" class="mr-2">{{lessonEntry.lesson.startDate.format('HH:mm')}}-
+              {{lessonEntry.lesson.endDate.format('HH:mm')}}</p>
+            <p *ngIf="language == 'ru'" class="mr-2">{{lessonEntry.lesson.nameRus}}, </p>
+            <p *ngIf="language == 'ru'" class="mr-2">{{lessonEntry.lesson.teacher.firstNameRus}}</p>
 
-            <span *ngIf="language == 'et'" class="mr-2">
-             {{lessonEntry.lesson.startDate.format('HH:mm')}}-{{lessonEntry.lesson.endDate.format('HH:mm')}}
-              {{lessonEntry.lesson.name}}, {{lessonEntry.lesson.teacher.firstName}}
-          </span>
-
+            <p *ngIf="language == 'et'" class="mr-2">{{lessonEntry.lesson.startDate.format('HH:mm')}}-
+              {{lessonEntry.lesson.endDate.format('HH:mm')}}</p>
+            <p *ngIf="language == 'et'" class="mr-2">{{lessonEntry.lesson.name}}, </p>
+            <p *ngIf="language == 'et'" class="mr-2">{{lessonEntry.lesson.teacher.firstName}}</p>
 
             <button type="button" class="btn btn-primary btn-sm"
                     [disabled]="lessonEntry.lesson.startDate.isBefore(now)"
