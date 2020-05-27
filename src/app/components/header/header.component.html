@@ -83,20 +83,13 @@
               </a>
             </li>
 
-<!--            <li *ngSwitchCase="false">-->
-<!--              <a ngbDropdownItem (click)="login()" id="login">-->
-<!--                <i class="fas fa-sign-in-alt" fixedWidth="true"></i>-->
-<!--                <span class="ml-1">{{'action.login' | translate}}</span>-->
-<!--              </a>-->
-<!--            </li>-->
-
-                        <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
-                          <a ngbDropdownItem routerLink="/login" routerLinkActive="active">
-                            <i class="fas fa-sign-in-alt" fixedWidth="true"></i>
-                            <span class="ml-1">{{'action.login' | translate}}
+            <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
+              <a ngbDropdownItem routerLink="/login" routerLinkActive="active">
+                <i class="fas fa-sign-in-alt" fixedWidth="true"></i>
+                <span class="ml-1">{{'action.login' | translate}}
                             </span>
-                          </a>
-                        </li>
+              </a>
+            </li>
 
             <li *ngSwitchCase="false" (click)="isNavbarCollapsed = true">
               <a ngbDropdownItem routerLink="/register" routerLinkActive="active">

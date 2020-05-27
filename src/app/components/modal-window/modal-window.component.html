@@ -26,7 +26,6 @@
   </div>
 
   <div class="modal-body mx-3">
-    <!--<p class="mx-3">-->
     <div *ngSwitchCase="'en'">{{lessonEntry.lesson.descriptionEng}}</div>
     <div *ngSwitchCase="'ru'">{{lessonEntry.lesson.descriptionRus}}</div>
     <div *ngSwitchDefault>{{lessonEntry.lesson.description}}</div>

@@ -55,10 +55,6 @@ export class TimetableComponent implements AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-
-  isAuthenticated() {
-
-  }
 }
 
 

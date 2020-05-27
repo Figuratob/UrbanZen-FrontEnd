@@ -1,8 +1,6 @@
 import { Component, AfterViewInit, Renderer, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-// import { EMAIL_NOT_FOUND_TYPE } from 'app/shared';
-
 import { PasswordResetInitService } from './password-reset-init.service';
 
 @Component({
@@ -39,7 +37,6 @@ export class PasswordResetInitComponent implements AfterViewInit {
       response => {
         this.success = null;
         if (response.status === 400
-          // && response.error.type === EMAIL_NOT_FOUND_TYPE
         ) {
           this.errorEmailNotExists = 'ERROR';
         } else {

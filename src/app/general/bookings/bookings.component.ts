@@ -10,7 +10,6 @@ import {LessonEntry} from "../../model/lesson-entry.model";
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
-  styleUrls: ['./bookings.component.css'],
   providers: [BookingService]
 })
 

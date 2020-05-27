@@ -12,7 +12,6 @@ import { Moment } from 'moment';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.css'],
   providers: [ScheduleService]
 })
 
