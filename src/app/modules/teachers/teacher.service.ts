@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Teacher} from '../../model/teacher.model';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {ConfigService} from "../../services/config/config.service";
+import {ConfigService} from "../../services/config.service";
 
 type EntityArrayResponseType = HttpResponse<Teacher[]>;
 

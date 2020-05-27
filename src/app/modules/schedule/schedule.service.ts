@@ -6,7 +6,7 @@ import {Lesson} from "../../model/lesson.model";
 import * as moment from "moment";
 import {TimetableDTO} from "../../model/timetableDTO.model";
 import { Moment } from 'moment';
-import {ConfigService} from "../../services/config/config.service";
+import {ConfigService} from "../../services/config.service";
 
 type EntityArrayResponseType = HttpResponse<TimetableDTO[]>;
 

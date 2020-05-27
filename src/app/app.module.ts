@@ -7,7 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {HeaderModule} from './components/header/header.module';
 import {TimetableModule} from './components/timetable/timetable.module';
-import {ConfigService} from './services/config/config.service';
+import {ConfigService} from './services/config.service';
 import {BookingsModule} from './modules/bookings/bookings.module';
 import {ScheduleModule} from './modules/schedule/schedule.module';
 import {RegisterComponent} from "./modules/account/register/register.component";

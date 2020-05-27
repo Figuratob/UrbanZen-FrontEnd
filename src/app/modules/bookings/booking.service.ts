@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {Booking} from "../../model/booking.model";
 import {map} from "rxjs/operators";
 import * as moment from 'moment';
-import {ConfigService} from "../../services/config/config.service";
+import {ConfigService} from "../../services/config.service";
 
 type EntityResponseType = HttpResponse<Booking>;
 type EntityArrayResponseType = HttpResponse<Booking[]>;
