@@ -3,7 +3,11 @@ import {Lesson} from "./lesson.model";
 import {User} from './user.model';
 
 export class Booking {
-  constructor(id: number, reservationDate: Moment, cancelDate: Moment, user: User, lesson: Lesson) {
+  constructor(id: number,
+              reservationDate: Moment,
+              cancelDate: Moment,
+              user: User,
+              lesson: Lesson) {
     this.id = id;
     this.reservationDate = reservationDate;
     this.cancelDate = cancelDate;
@@ -16,5 +20,4 @@ export class Booking {
   cancelDate: Moment;
   user: User;
   lesson: Lesson;
-
 }

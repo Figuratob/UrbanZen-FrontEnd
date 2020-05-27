@@ -7,7 +7,7 @@ import {Moment} from "moment";
 import {Observable} from "rxjs";
 import {HttpResponse} from "@angular/common/http";
 import {Booking} from 'src/app/model/booking.model';
-import {BookingService} from "../../modules/bookings/booking.service";
+import {BookingService} from "../../general/bookings/booking.service";
 import {LessonEntry} from "../../model/lesson-entry.model";
 import {TranslateService} from "@ngx-translate/core";
 import {AuthenticationService} from "../../services/authentication.service";

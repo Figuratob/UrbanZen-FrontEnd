@@ -1,25 +1,25 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ScheduleComponent} from './modules/schedule/schedule.component';
+import {ScheduleComponent} from './general/schedule/schedule.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
-import {RegisterComponent} from "./modules/account/register/register.component";
-import {SettingsComponent} from "./modules/account/settings/settings.component";
-import {LoginComponent} from "./modules/account/login/login.component";
-import {PasswordComponent} from "./modules/account/password/password.component";
+import {RegisterComponent} from "./general/account/register/register.component";
+import {SettingsComponent} from "./general/account/settings/settings.component";
+import {LoginComponent} from "./general/account/login/login.component";
+import {PasswordComponent} from "./general/account/password/password.component";
 import {AuthGuard} from "./components/auth.guard";
-import {PasswordResetInitComponent} from "./modules/account/password-reset/init/password-reset-init.component";
-import {ActivateComponent} from "./modules/account/activate/activate.component";
+import {PasswordResetInitComponent} from "./general/account/password-reset/init/password-reset-init.component";
+import {ActivateComponent} from "./general/account/activate/activate.component";
 
 const routes: Routes = [
 
   {path: '', component: ScheduleComponent},
   {
     path: 'teachers',
-    loadChildren: () => import('./modules/teachers/teachers.module').then(mod => mod.TeachersModule)
+    loadChildren: () => import('./general/teachers/teachers.module').then(mod => mod.TeachersModule)
   },
   {
     path: 'bookings',
-    loadChildren: () => import('./modules/bookings/bookings.module').then(mod => mod.BookingsModule), canActivate :[AuthGuard]
+    loadChildren: () => import('./general/bookings/bookings.module').then(mod => mod.BookingsModule), canActivate :[AuthGuard]
   },
   {
     path: 'register',
