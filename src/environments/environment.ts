@@ -8,25 +8,12 @@ export const environment = {
   config: {
     /* SELECT ONE OF THOSE CONFIGURATIONS */
 
-    /* LOCAL JSON (NO CRUD) */
-    /* api: false,
-    url: './assets/params/json/',*/
-
     /* LOCAL REST API CRUD  */
     /* api: true,
     url: 'http://localhost:5200/', */
 
     /* EXTERNAL REST API CRUD */
-    // api: true,
-    // url: 'https://mock.ganatan.org/',
-
-    /* EXTERNAL REST API CRUD */
     api: true,
     url: 'http://localhost:8080/',
-
-    /* EXTERNAL REST API (NO CRUD) */
-    /* api: true,
-    url: 'https://api.ganatan.org/', */
-
   },
 };

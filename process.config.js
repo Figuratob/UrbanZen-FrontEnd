@@ -1,7 +1,7 @@
 module.exports = {
   apps : [
     {
-      name      : 'ganatan-frontend',
+      name      : 'urbanzen-frontend',
       script    : 'dist/server.js',
       env: {
         COMMON_VARIABLE: 'true'
