@@ -14,8 +14,6 @@ export class AppComponent {
     translateService.addLangs(['et', 'en', 'ru']);
     translateService.setDefaultLang('et');
 
-    // translateService.use(translateService.currentLang == undefined ? 'et' : translateService.currentLang);
-    // translateService.use(localStorage.getItem('lang') == null ? 'et' : localStorage.getItem('lang'));
     translateService.use((translateService.currentLang == undefined) || (localStorage.getItem('lang') == null) ?
     (translateService.defaultLang) : (translateService.currentLang || localStorage.getItem('lang')));
   }
