@@ -37,7 +37,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "4.3.1",
     "express": "4.17.1",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "messageformat": "^2.0.2",
     "moment": "^2.24.0",
     "ngx-translate-messageformat-compiler": "^4.5.0",
